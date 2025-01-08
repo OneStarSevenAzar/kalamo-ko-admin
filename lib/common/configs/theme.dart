@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shop_style/common/configs/colors.dart';
 
 class CustomTheme {
   ThemeData lighTheme = ThemeData(
@@ -9,9 +10,61 @@ class CustomTheme {
     textTheme: const TextTheme(
       //
       titleLarge: TextStyle(
-        color: Color(0xFF0D1619),
-        fontWeight: FontWeight.bold,
-        fontSize: 40,
+        fontFamily: 'IRANSansDB',
+        color: AppColors.black,
+        fontWeight: FontWeight.w700,
+        fontSize: 24,
+      ),
+      titleMedium: TextStyle(
+        fontFamily: 'IRANSansDB',
+        color: AppColors.black,
+        fontWeight: FontWeight.w700,
+        fontSize: 16,
+      ),
+      ////////////////////////////////////////
+      bodyMedium: TextStyle(
+        fontFamily: 'IRANSansDB',
+        color: AppColors.black,
+        fontWeight: FontWeight.w500,
+        fontSize: 16,
+      ),
+      bodySmall: TextStyle(
+        fontFamily: 'IRANSansDB',
+        color: AppColors.grey,
+        fontWeight: FontWeight.w400,
+        fontSize: 16,
+      ),
+      ////////////////////////////////////////
+      displayMedium: TextStyle(
+        fontFamily: 'IRANSansDB',
+        color: AppColors.darkYellow,
+        fontWeight: FontWeight.w700,
+        fontSize: 12,
+      ),
+      displaySmall: TextStyle(
+        fontFamily: 'IRANSansDB',
+        color: AppColors.yellow,
+        fontWeight: FontWeight.w400,
+        fontSize: 12,
+      ),
+      ////////////////////////////////////
+      labelMedium: TextStyle(
+        fontFamily: 'IRANSansDB',
+        color: AppColors.black,
+        fontWeight: FontWeight.w400,
+        fontSize: 14,
+      ),
+      labelSmall: TextStyle(
+        fontFamily: 'IRANSansDB',
+        color: AppColors.black,
+        fontWeight: FontWeight.w400,
+        fontSize: 10,
+      ),
+      labelLarge: TextStyle(
+        fontFamily: 'IRANSansDB',
+        color: AppColors.lightGrey2,
+        fontWeight: FontWeight.w400,
+        fontSize: 8,
       ),
     ),
   );
