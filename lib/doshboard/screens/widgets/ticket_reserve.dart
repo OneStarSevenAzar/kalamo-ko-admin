@@ -18,7 +18,8 @@ class _TicketReserveState extends State<TicketReserve> {
   Widget build(BuildContext context) {
     final double width = MediaQuery.of(context).size.width;
 
-    return SizedBox(
+    return AnimatedContainer(
+      duration: const Duration(milliseconds: 400),
       height: heightSize,
       child: ListView.builder(
         physics: const NeverScrollableScrollPhysics(),

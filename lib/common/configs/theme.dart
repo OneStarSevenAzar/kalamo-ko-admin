@@ -26,7 +26,7 @@ class CustomTheme {
         color: AppColors.black,
         fontWeight: FontWeight.w700,
         fontSize: 20,
-      ),  
+      ),
       ////////////////////////////////////////
       bodyMedium: TextStyle(
         fontFamily: 'IRANSansDB',
@@ -64,6 +64,12 @@ class CustomTheme {
         fontFamily: 'IRANSansDB',
         color: AppColors.white,
         fontWeight: FontWeight.w700,
+        fontSize: 14,
+      ),
+      labelSmall: TextStyle(
+        fontFamily: 'IRANSansDB',
+        color: AppColors.bottomSheetColor,
+        fontWeight: FontWeight.w500,
         fontSize: 14,
       ),
     ),

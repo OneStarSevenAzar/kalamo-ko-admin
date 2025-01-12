@@ -16,76 +16,91 @@ class InfoPage extends StatefulWidget {
 class _InfoPageState extends State<InfoPage> {
   @override
   Widget build(BuildContext context) {
+    const EdgeInsets bacePadding = EdgeInsets.only(left: 22);
+
     return Scaffold(
       backgroundColor: AppColors.white,
       body: SafeArea(
         child: CustomScrollView(
           slivers: <Widget>[
-            const SliverToBoxAdapter(
-              child: Column(
-                children: [
-                  CustomTextBox(
-                    mainText: 'نام کامل آرایشگاه',
-                    hintTextfield: 'نام کامل آرایشگاه',
-                  ),
-                  SizedBox(height: 10),
-                  InputBox(
-                    mainText: 'توضیحات آرایشگاه',
-                    hintTextfield: 'توضیحاتی را درمورد آرایشگاه خود بنوسید.',
-                  ),
-                  SizedBox(height: 10),
-                  CustomTextBox(
-                    mainText: 'آدرس وبسایت',
-                    hintTextfield:
-                        'در صورتی که وبسایت دارید آدرس آن را بنویسید',
-                  ),
-                ],
+            const SliverPadding(
+              padding: bacePadding,
+              sliver: SliverToBoxAdapter(
+                child: Column(
+                  children: [
+                    CustomTextBox(
+                      mainText: 'نام کامل آرایشگاه',
+                      hintTextfield: 'نام کامل آرایشگاه',
+                    ),
+                    SizedBox(height: 10),
+                    InputBox(
+                      mainText: 'توضیحات آرایشگاه',
+                      hintTextfield: 'توضیحاتی را درمورد آرایشگاه خود بنوسید.',
+                    ),
+                    SizedBox(height: 10),
+                    CustomTextBox(
+                      mainText: 'آدرس وبسایت',
+                      hintTextfield:
+                          'در صورتی که وبسایت دارید آدرس آن را بنویسید',
+                    ),
+                  ],
+                ),
               ),
             ),
             const SliverToBoxAdapter(
               child: Column(
                 children: [
                   SizedBox(height: 50),
-                  EditButton(nameCategory: 'اعضای آرایشگاه'),
+                  Padding(
+                    padding: bacePadding,
+                    child: EditButton(nameCategory: 'اعضای آرایشگاه'),
+                  ),
                   SizedBox(height: 22),
                   CustomListView(),
                 ],
               ),
             ),
-            SliverToBoxAdapter(
-              child: Column(
-                children: [
-                  const SizedBox(height: 40),
-                  const EditButton(nameCategory: 'ساعت کاری'),
-                  const SizedBox(height: 15),
-                  SizedBox(
-                    height: 220,
-                    child: ListView.builder(
-                      physics: const NeverScrollableScrollPhysics(),
-                      itemCount: 7,
-                      itemBuilder: (context, index) {
-                        return const Padding(
-                          padding: EdgeInsets.only(top: 5),
-                          child: TimeWork(),
-                        );
-                      },
+            SliverPadding(
+              padding: bacePadding,
+              sliver: SliverToBoxAdapter(
+                child: Column(
+                  children: [
+                    const SizedBox(height: 40),
+                    const EditButton(nameCategory: 'ساعت کاری'),
+                    const SizedBox(height: 15),
+                    SizedBox(
+                      height: 220,
+                      child: ListView.builder(
+                        physics: const NeverScrollableScrollPhysics(),
+                        itemCount: 7,
+                        itemBuilder: (context, index) {
+                          return const Padding(
+                            padding: EdgeInsets.only(top: 5),
+                            child: TimeWork(),
+                          );
+                        },
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
-            const SliverToBoxAdapter(
-              child: Column(
-                children: [
-                  InputBox(
-                    hintTextfield: 'آدرس آرایشگاه خود را وارد کنید',
-                  ),
-                  SizedBox(
-                    height: 50,
-                  ),
-                ],
+            const SliverPadding(
+              padding: bacePadding,
+              sliver: SliverToBoxAdapter(
+                child: Column(
+                  children: [
+                    InputBox(
+                      hintTextfield: 'آدرس آرایشگاه خود را وارد کنید',
+                    ),
+                    SizedBox(
+                      height: 50,
+                    ),
+                  ],
+                ),
               ),
             ),
+            const SliverPadding(padding: EdgeInsets.only(top: 70)),
           ],
         ),
       ),

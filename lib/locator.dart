@@ -9,10 +9,10 @@
 // Future<void> setupLocator() async {
 //   // Register Dio instance
 //   locator.registerSingleton<Dio>(Dio());
-//   locator.registerSingleton<GlobalController>(GlobalController());
 
-//   locator.registerSingleton<ApiClientV3>(ApiClientV3(),
-//       instanceName: "ApiClientV3");
+//   locator.registerSingleton<ApiClientV3>(
+//     ApiClientV3(),
+//   );
 
 //   locator.registerSingleton<ApiClientV3>(
 //     ApiClientV3(
@@ -29,4 +29,10 @@
 //         headerType: AppHttpHeadersEnum.Otp,
 //       ),
 //       instanceName: "ApiClientV3Otp");
+
+//   //controllers
+//   locator.registerSingleton<DoshboardController>(DoshboardController());
+//   locator.registerSingleton<ServicesController>(ServicesController());
+//   locator.registerSingleton<HomeController>(HomeController());
+//   locator.registerSingleton<BarberShopController>(BarberShopController());
 // }

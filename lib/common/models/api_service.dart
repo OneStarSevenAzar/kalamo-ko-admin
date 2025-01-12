@@ -1,10 +1,11 @@
 // import 'dart:async';
-// import 'dart:developer';
 // import 'package:dio/dio.dart';
 // import 'package:shop_style/common/configs/constatns.dart';
 // import 'package:shop_style/common/configs/enums.dart';
 // import 'package:shop_style/common/services/functions.dart';
 // import 'package:shop_style/common/services/response_model.dart';
+// import 'package:shop_style/common/statemanagment/global_controller.dart';
+// import 'package:shop_style/locator.dart';
 
 // class ApiClientV3 {
 //   late Dio dio;
@@ -200,9 +201,9 @@
 //   }
 // }
 
-// // getToken() {
-// //   return "Bearer ${locator<GlobalsCubit>().state.token}";
-// // }
+// getToken() {
+//   return "Bearer ${locator.get<DoshboardController>().token}";
+// }
 
 // // getDeviceId() {
 // //   return locator<GlobalsCubit>().state.xDeviceId;
@@ -218,7 +219,7 @@
 //       return {
 //         'Accept': 'application/json',
 //         'Content-Type': 'application/json',
-//         // 'Authorization': getToken(),
+//         'Authorization': getToken(),
 //         // 'Accept-Language': getLanguage(),
 //         // 'x-device-id': getDeviceId(),
 //         // 'X-CLIENT-ID': 'teacher_flutter',
@@ -231,7 +232,7 @@
 //       return {
 //         'Accept': 'application/json',
 //         'Content-Type': 'multipart/form-data',
-//         // 'Authorization': getToken(),
+//         'Authorization': getToken(),
 //         // 'Accept-Language': getLanguage(),
 //         // 'x-device-id': getDeviceId(),
 //         // 'X-CLIENT-ID': 'teacher_flutter',

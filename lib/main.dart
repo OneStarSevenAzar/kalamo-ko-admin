@@ -1,15 +1,13 @@
 import 'dart:ui';
-
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'package:shop_style/barber%20shop/screens/barber_shop.dart';
+import 'package:shop_style/common/configs/colors.dart';
 import 'package:shop_style/common/configs/theme.dart';
-import 'package:shop_style/common/statemanagment/global_controller.dart';
+import 'package:shop_style/doshboard/screens/doshboard_page.dart';
 import 'package:shop_style/home/screens/home_screen.dart';
+import 'package:shop_style/pervice/services_page.dart';
 
 void main() {
-  WidgetsFlutterBinding.ensureInitialized();
-  // setupLocator();
   runApp(MaterialApp(
     theme: CustomTheme().lighTheme,
     scrollBehavior: const MaterialScrollBehavior().copyWith(
@@ -20,25 +18,77 @@ void main() {
         PointerDeviceKind.unknown,
       },
     ),
-    home: const BarberShop(),
+    home: const MyApp(),
   ));
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({super.key});
 
   @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  int _currentIndex = 0;
+  final List<Widget> _screens = const [
+    BarberShop(),
+    HomeScreen(),
+    HomeScreen(),
+    ServicesPage(),
+    DoshboardPage(),
+  ];
+
+  @override
   Widget build(BuildContext context) {
-    return MultiProvider(
-      providers: const [
-        // ChangeNotifierProvider(
-        //   create: (context) => locator.get<GlobalController>(),
-        // )
-      ],
-      child: Consumer<GlobalController>(
-        builder: (context, value, child) {
-          return const HomeScreen();
-        },
+    return Scaffold(
+      body: _screens[_currentIndex],
+      bottomNavigationBar: Container(
+        height: 70,
+        decoration: const BoxDecoration(
+          border: Border(
+            top: BorderSide(color: AppColors.lightGrey, width: 4),
+          ),
+        ),
+        child: BottomNavigationBar(
+          selectedItemColor: AppColors.purple,
+          unselectedItemColor: AppColors.bottomSheetColor,
+          showUnselectedLabels: true,
+          showSelectedLabels: true,
+          selectedLabelStyle: Theme.of(context)
+              .textTheme
+              .labelMedium
+              ?.copyWith(color: AppColors.purple),
+          unselectedLabelStyle: Theme.of(context).textTheme.labelSmall,
+          currentIndex: _currentIndex,
+          onTap: (index) {
+            setState(() {
+              _currentIndex = index;
+            });
+          },
+          items: const [
+            BottomNavigationBarItem(
+              icon: Icon(Icons.shop_rounded),
+              label: 'آرایشگاه',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.chat),
+              label: 'چت',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.add_business_rounded),
+              label: 'افزودن آگهی',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.room_service_rounded),
+              label: 'خدمات',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.dashboard),
+              label: 'داشبورد',
+            ),
+          ],
+        ),
       ),
     );
   }

@@ -2,29 +2,34 @@ import 'package:flutter/material.dart';
 import 'package:shop_style/common/configs/widgets/custom_appbar.dart';
 import 'package:shop_style/common/configs/widgets/custom_list_view.dart';
 
-class PerviceScreen extends StatefulWidget {
-  const PerviceScreen({super.key});
+class ServicesPage extends StatefulWidget {
+  const ServicesPage({super.key});
 
   @override
-  State<PerviceScreen> createState() => _PerviceScreenState();
+  State<ServicesPage> createState() => _ServicesPageState();
 }
 
-class _PerviceScreenState extends State<PerviceScreen> {
+class _ServicesPageState extends State<ServicesPage> {
   @override
   Widget build(BuildContext context) {
+    const EdgeInsets bacePadding = EdgeInsets.symmetric(horizontal: 22);
+
     return Scaffold(
       backgroundColor: Colors.white,
       body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 22),
-          child: Directionality(
-            textDirection: TextDirection.rtl,
-            child: CustomScrollView(
-              slivers: <Widget>[
-                const SliverToBoxAdapter(
+        child: Directionality(
+          textDirection: TextDirection.rtl,
+          child: CustomScrollView(
+            slivers: <Widget>[
+              const SliverPadding(
+                padding: bacePadding,
+                sliver: SliverToBoxAdapter(
                   child: CustomAppbar(),
                 ),
-                SliverToBoxAdapter(
+              ),
+              SliverPadding(
+                padding: const EdgeInsets.only(right: 22),
+                sliver: SliverToBoxAdapter(
                   child: SizedBox(
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -39,8 +44,11 @@ class _PerviceScreenState extends State<PerviceScreen> {
                     ),
                   ),
                 ),
-                const SliverPadding(padding: EdgeInsets.only(top: 15)),
-                SliverToBoxAdapter(
+              ),
+              const SliverPadding(padding: EdgeInsets.only(top: 15)),
+              SliverPadding(
+                padding: const EdgeInsets.only(right: 22),
+                sliver: SliverToBoxAdapter(
                   child: SizedBox(
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -55,8 +63,10 @@ class _PerviceScreenState extends State<PerviceScreen> {
                     ),
                   ),
                 ),
-              ],
-            ),
+              ),
+              const SliverPadding(padding: EdgeInsets.only(top: 30)),
+     
+            ],
           ),
         ),
       ),
