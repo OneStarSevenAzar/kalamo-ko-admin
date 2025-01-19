@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:shop_style/common/configs/colors.dart';
+import 'package:shop_style/common/configs/enums.dart';
 import 'package:shop_style/common/configs/widgets/column_chart.dart';
 
 class CustomListView extends StatefulWidget {
-  const CustomListView({super.key});
+  const CustomListView({super.key, required this.type});
+
+  final TypeListView type;
 
   @override
   State<CustomListView> createState() => _CustomListViewState();
@@ -32,8 +35,20 @@ class _CustomListViewState extends State<CustomListView> {
                 children: [
                   AnimatedContainer(
                     duration: const Duration(milliseconds: 400),
-                    height: selectedIndex == index ? 340 : 280,
-                    width: selectedIndex == index ? 320 : 150,
+                    height: widget.type == TypeListView.poroduct
+                        ? selectedIndex == index
+                            ? 350
+                            : 280
+                        : selectedIndex == index
+                            ? 350
+                            : 125,
+                    width: widget.type == TypeListView.poroduct
+                        ? selectedIndex == index
+                            ? 320
+                            : 150
+                        : selectedIndex == index
+                            ? 320
+                            : 125,
                     decoration: BoxDecoration(
                       borderRadius: const BorderRadius.all(Radius.circular(12)),
                       border: Border.all(color: AppColors.lightGrey),
@@ -46,15 +61,47 @@ class _CustomListViewState extends State<CustomListView> {
                         children: [
                           const SizedBox(width: 300),
                           Positioned(
-                            right: 0,
-                            top: selectedIndex == index ? 8 : 0,
+                            top: 9,
+                            left: 3,
+                            child: Visibility(
+                              visible:
+                                  widget.type == TypeListView.barberArtist &&
+                                      selectedIndex == index,
+                              child: const Icon(Icons.menu),
+                            ),
+                          ),
+                          Positioned(
+                            right: widget.type == TypeListView.barberArtist &&
+                                    selectedIndex != index
+                                ? 6
+                                : 0,
+                            top: widget.type == TypeListView.poroduct
+                                ? selectedIndex == index
+                                    ? 8
+                                    : 0
+                                : 6,
                             child: ClipRRect(
-                              borderRadius: const BorderRadius.all(
-                                Radius.circular(12),
+                              borderRadius: BorderRadius.vertical(
+                                top: const Radius.circular(12),
+                                bottom: Radius.circular(
+                                  widget.type == TypeListView.poroduct &&
+                                          selectedIndex != index
+                                      ? 0
+                                      : 12,
+                                ),
                               ),
-                              child: SizedBox(
-                                height: selectedIndex == index ? 110 : 150,
-                                width: selectedIndex == index ? 110 : 150,
+                              child: AnimatedContainer(
+                                duration: const Duration(milliseconds: 500),
+                                height: widget.type == TypeListView.poroduct
+                                    ? selectedIndex == index
+                                        ? 110
+                                        : 150
+                                    : 110,
+                                width: widget.type == TypeListView.poroduct
+                                    ? selectedIndex == index
+                                        ? 110
+                                        : 150
+                                    : 110,
                                 child: Image.asset(
                                   'assets/images/1.png',
                                   fit: BoxFit.cover,
@@ -69,6 +116,7 @@ class _CustomListViewState extends State<CustomListView> {
                           ),
                           Positioned(
                             top: 120,
+                            left: 0,
                             child: selectedIndex == index
                                 ? const Padding(
                                     padding: EdgeInsets.symmetric(vertical: 8),
@@ -90,89 +138,94 @@ class _CustomListViewState extends State<CustomListView> {
   }
 
   Widget getTexts(BuildContext context, index) {
-    return Padding(
-      padding: const EdgeInsets.only(bottom: 8),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            'نام مدل مو',
-            style: Theme.of(context).textTheme.titleMedium,
-          ),
-          const SizedBox(height: 2),
-          Row(
-            children: [
-              Text(
-                '(55)',
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          'نام مدل مو',
+          style: Theme.of(context).textTheme.titleMedium,
+        ),
+        Row(
+          children: [
+            Text(
+              '(55)',
+              style: Theme.of(context)
+                  .textTheme
+                  .labelMedium
+                  ?.copyWith(color: AppColors.purple),
+            ),
+            const SizedBox(width: 4),
+            Text(
+              '4.4',
+              style: Theme.of(context).textTheme.titleMedium,
+            ),
+            const Icon(Icons.star_rounded, size: 20),
+          ],
+        ),
+        widget.type == TypeListView.barberArtist
+            ? Text(
+                'متخصص رنگ مو',
                 style: Theme.of(context)
                     .textTheme
-                    .labelMedium
-                    ?.copyWith(color: AppColors.purple),
-              ),
-              const SizedBox(width: 4),
-              Text(
-                '4.4',
+                    .titleMedium
+                    ?.copyWith(color: AppColors.grey),
+              )
+            : Text(
+                '125,000 تومان',
                 style: Theme.of(context).textTheme.titleMedium,
               ),
-              const Icon(Icons.star_rounded, size: 20),
-            ],
-          ),
-          const SizedBox(height: 2),
-          Text(
-            '125,000 تومان',
-            style: Theme.of(context).textTheme.labelMedium,
-          ),
-          const SizedBox(height: 2),
-          selectedIndex == index
-              ? Container(
-                  height: 37,
-                  width: 175,
+        const SizedBox(height: 2),
+        selectedIndex == index
+            ? Container(
+                height: 37,
+                width: 175,
+                decoration: BoxDecoration(
+                  border: Border.all(
+                    color: AppColors.purple,
+                    width: 2,
+                  ),
+                  borderRadius: const BorderRadius.all(
+                    Radius.circular(8),
+                  ),
+                ),
+                child: Center(
+                  child: Text(
+                    widget.type == TypeListView.barberArtist
+                        ? 'ویرایش آرایشگر'
+                        : 'ویرایش مدل',
+                    style: Theme.of(context)
+                        .textTheme
+                        .displayMedium
+                        ?.copyWith(color: AppColors.purple),
+                  ),
+                ),
+              )
+            : Padding(
+                padding: const EdgeInsets.only(top: 8),
+                child: Container(
+                  height: 25,
+                  width: 95,
                   decoration: BoxDecoration(
                     border: Border.all(
-                      color: AppColors.purple,
+                      color: AppColors.lightGrey,
                       width: 2,
                     ),
                     borderRadius: const BorderRadius.all(
-                      Radius.circular(8),
+                      Radius.circular(360),
                     ),
                   ),
                   child: Center(
                     child: Text(
-                      'ویرایش مدل',
+                      'مدل مو',
                       style: Theme.of(context)
                           .textTheme
-                          .displayMedium
-                          ?.copyWith(color: AppColors.purple),
-                    ),
-                  ),
-                )
-              : Padding(
-                  padding: const EdgeInsets.only(top: 8),
-                  child: Container(
-                    height: 30,
-                    width: 95,
-                    decoration: BoxDecoration(
-                      border: Border.all(
-                        color: AppColors.lightGrey,
-                        width: 2,
-                      ),
-                      borderRadius: const BorderRadius.all(
-                        Radius.circular(360),
-                      ),
-                    ),
-                    child: Center(
-                      child: Text(
-                        'مدل مو',
-                        style: Theme.of(context)
-                            .textTheme
-                            .labelMedium
-                            ?.copyWith(color: AppColors.black),
-                      ),
+                          .labelMedium
+                          ?.copyWith(color: AppColors.black),
                     ),
                   ),
                 ),
-        ],
-      ),
+              ),
+      ],
     );
   }
 }

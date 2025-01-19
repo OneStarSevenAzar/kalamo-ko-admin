@@ -15,7 +15,7 @@ class ShowMoreButton extends StatelessWidget {
       decoration: BoxDecoration(
         border: Border.all(
           color: AppColors.lightGrey,
-          width: 2,
+          width: 1,
         ),
         color: AppColors.white,
         borderRadius: const BorderRadius.all(

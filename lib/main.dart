@@ -6,6 +6,7 @@ import 'package:shop_style/common/configs/theme.dart';
 import 'package:shop_style/doshboard/screens/doshboard_page.dart';
 import 'package:shop_style/home/screens/home_screen.dart';
 import 'package:shop_style/pervice/services_page.dart';
+import 'package:shop_style/product%20uploade/product_uploade_page.dart';
 
 void main() {
   runApp(MaterialApp(
@@ -34,7 +35,7 @@ class _MyAppState extends State<MyApp> {
   final List<Widget> _screens = const [
     BarberShop(),
     HomeScreen(),
-    HomeScreen(),
+    ProductUploadePage(),
     ServicesPage(),
     DoshboardPage(),
   ];

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shop_style/common/configs/enums.dart';
 import 'package:shop_style/common/configs/widgets/custom_appbar.dart';
 import 'package:shop_style/common/configs/widgets/custom_list_view.dart';
 
@@ -39,7 +40,7 @@ class _ServicesPageState extends State<ServicesPage> {
                           style: Theme.of(context).textTheme.titleLarge,
                         ),
                         const SizedBox(height: 22),
-                        const CustomListView(),
+                        const CustomListView(type: TypeListView.poroduct,),
                       ],
                     ),
                   ),
@@ -58,7 +59,7 @@ class _ServicesPageState extends State<ServicesPage> {
                           style: Theme.of(context).textTheme.titleLarge,
                         ),
                         const SizedBox(height: 22),
-                        const CustomListView(),
+                        const CustomListView(type: TypeListView.poroduct,),
                       ],
                     ),
                   ),

@@ -15,4 +15,6 @@ class AppColors {
   static const Color bottomSheetColor = Color(0xFFA6A6D3);
   static const Color shadowColor = Color(0x7E000000);
   static const Color darkWhite = Color(0xFFD9D9D9);
+  static const Color cyan = Color(0xFF73AFFE);
+  static const Color grey2 = Color(0xFF909090);
 }

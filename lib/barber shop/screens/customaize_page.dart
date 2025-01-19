@@ -11,7 +11,7 @@ class CustomaizePage extends StatelessWidget {
       backgroundColor: const Color(0xFFFFFFFF),
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.only(left:  22),
+          padding: const EdgeInsets.only(left: 22),
           child: Directionality(
             textDirection: TextDirection.rtl,
             child: CustomScrollView(
@@ -31,45 +31,14 @@ class CustomaizePage extends StatelessWidget {
                         style: Theme.of(context).textTheme.bodySmall,
                       ),
                       const SizedBox(height: 10),
-                      Stack(
-                        children: [
-                          Container(
-                            height: 300,
-                            decoration: BoxDecoration(
-                              border: Border.all(
-                                  color: AppColors.lightGrey, width: 2),
-                              color: AppColors.white,
-                              borderRadius:
-                                  const BorderRadius.all(Radius.circular(16)),
-                            ),
-                            child: Image.asset(
-                              'assets/images/2.png',
-                              fit: BoxFit.cover,
-                            ),
-                          ),
-                          Positioned(
-                            right: 22,
-                            bottom: 12,
-                            child: Container(
-                              height: 30,
-                              width: 50,
-                              decoration: const BoxDecoration(
-                                color: AppColors.black,
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(360)),
-                              ),
-                              child: Center(
-                                child: Text(
-                                  '5 / 1',
-                                  style: Theme.of(context)
-                                      .textTheme
-                                      .displayMedium
-                                      ?.copyWith(color: AppColors.white),
-                                ),
-                              ),
-                            ),
-                          ),
-                        ],
+                      const ClipRRect(
+                        borderRadius: BorderRadius.all(
+                          Radius.circular(16),
+                        ),
+                        child: SizedBox(
+                          height: 300,
+                          child: BannerSlider(),
+                        ),
                       ),
                     ],
                   ),
@@ -85,6 +54,67 @@ class CustomaizePage extends StatelessWidget {
             ),
           ),
         ),
+      ),
+    );
+  }
+}
+
+class BannerSlider extends StatefulWidget {
+  const BannerSlider({super.key});
+
+  @override
+  State<BannerSlider> createState() => _BannerSliderState();
+}
+
+class _BannerSliderState extends State<BannerSlider> {
+  List<String> images = ['assets/images/1.png', 'assets/images/2.png'];
+  PageController controller = PageController();
+  int selectedIndex = 0;
+
+  @override
+  Widget build(BuildContext context) {
+    return Directionality(
+      textDirection: TextDirection.rtl,
+      child: Stack(
+        children: [
+          PageView.builder(
+            physics: const BouncingScrollPhysics(),
+            onPageChanged: (value) {
+              setState(() {
+                selectedIndex = value;
+              });
+            },
+            controller: controller,
+            itemCount: images.length,
+            itemBuilder: (context, index) {
+              return Image.asset(
+                images[index],
+                fit: BoxFit.cover,
+              );
+            },
+          ),
+          Positioned(
+            right: 22,
+            bottom: 12,
+            child: Container(
+              height: 30,
+              width: 50,
+              decoration: const BoxDecoration(
+                color: AppColors.black,
+                borderRadius: BorderRadius.all(Radius.circular(360)),
+              ),
+              child: Center(
+                child: Text(
+                  '${images.length} / ${selectedIndex + 1}',
+                  style: Theme.of(context)
+                      .textTheme
+                      .displayMedium
+                      ?.copyWith(color: AppColors.white),
+                ),
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }

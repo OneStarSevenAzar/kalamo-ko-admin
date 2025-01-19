@@ -54,7 +54,7 @@ class _TicketReserveState extends State<TicketReserve> {
         decoration: BoxDecoration(
           border: Border.all(
             color: AppColors.lightGrey,
-            width: 2,
+            width: 1,
           ),
           borderRadius: BorderRadius.all(
             selectedIndex == index
@@ -77,8 +77,8 @@ class _TicketReserveState extends State<TicketReserve> {
                     ),
                     const Spacer(),
                     selectedIndex == index
-                        ? const Icon(Icons.keyboard_arrow_down_rounded)
-                        : const Icon(Icons.keyboard_arrow_up_rounded),
+                        ? const Icon(Icons.keyboard_arrow_up_rounded)
+                        : const Icon(Icons.keyboard_arrow_down_rounded),
                   ],
                 ),
                 const SizedBox(height: 16),

@@ -22,6 +22,7 @@ class _BarberShopState extends State<BarberShop> {
           child: Directionality(
             textDirection: TextDirection.rtl,
             child: CustomScrollView(
+              physics: const NeverScrollableScrollPhysics(),
               slivers: [
                 const SliverPadding(
                   padding: EdgeInsets.only(left: 22),
@@ -45,8 +46,7 @@ class _BarberShopState extends State<BarberShop> {
                     ],
                   ),
                 ),
-                const SliverPadding(padding: EdgeInsets.only(top: 15)),
-          
+                const SliverPadding(padding: EdgeInsets.only(top: 15)),         
               ],
             ),
           ),

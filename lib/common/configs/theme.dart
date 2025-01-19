@@ -72,6 +72,12 @@ class CustomTheme {
         fontWeight: FontWeight.w500,
         fontSize: 14,
       ),
+      labelLarge: TextStyle(
+        fontFamily: 'IRANSansDB',
+        color: AppColors.grey2,
+        fontWeight: FontWeight.w400,
+        fontSize: 10,
+      ),
     ),
   );
 }

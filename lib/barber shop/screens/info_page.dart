@@ -4,6 +4,7 @@ import 'package:shop_style/barber%20shop/widgets/edit_button.dart';
 import 'package:shop_style/barber%20shop/widgets/input_box.dart';
 import 'package:shop_style/barber%20shop/widgets/time_work.dart';
 import 'package:shop_style/common/configs/colors.dart';
+import 'package:shop_style/common/configs/enums.dart';
 import 'package:shop_style/common/configs/widgets/custom_list_view.dart';
 
 class InfoPage extends StatefulWidget {
@@ -56,7 +57,7 @@ class _InfoPageState extends State<InfoPage> {
                     child: EditButton(nameCategory: 'اعضای آرایشگاه'),
                   ),
                   SizedBox(height: 22),
-                  CustomListView(),
+                  CustomListView(type: TypeListView.barberArtist),
                 ],
               ),
             ),

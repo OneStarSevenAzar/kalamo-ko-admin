@@ -71,7 +71,7 @@ class _CustomTextBoxState extends State<CustomTextBox> {
                       absorbingTextfield = !absorbingTextfield;
                     });
                   },
-                  child: const Icon(Icons.security),
+                  child: const Icon(Icons.mode_rounded),
                 ),
               ],
             ),

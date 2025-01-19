@@ -54,32 +54,28 @@ class _DoshboardPageState extends State<DoshboardPage> {
                         style: Theme.of(context).textTheme.titleLarge,
                       ),
                       const SizedBox(height: 15),
-                      SizedBox(
-                        height: 250,
-                        child: GridView.builder(
-                          physics: const NeverScrollableScrollPhysics(),
-                          gridDelegate:
-                              const SliverGridDelegateWithFixedCrossAxisCount(
-                            mainAxisExtent: 120,
-                            crossAxisSpacing: 50,
-                            crossAxisCount: 2,
-                          ),
-                          itemCount: 4,
-                          itemBuilder: (BuildContext context, int index) {
-                            return ContainerData(
-                              icon: iconBox[index],
-                              title: titles[index],
-                              number: numbers[index],
-                            );
-                          },
-                        ),
-                      ),
                     ],
                   ),
+                ),
+                SliverGrid.builder(
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                    mainAxisExtent: 120,
+                    crossAxisSpacing: 10,
+                    crossAxisCount: 2,
+                  ),
+                  itemCount: 4,
+                  itemBuilder: (BuildContext context, int index) {
+                    return ContainerData(
+                      icon: iconBox[index],
+                      title: titles[index],
+                      number: numbers[index],
+                    );
+                  },
                 ),
                 SliverToBoxAdapter(
                   child: Column(
                     children: [
+                      const SizedBox(height: 15),
                       Row(
                         children: [
                           Container(
@@ -189,15 +185,13 @@ class _DoshboardPageState extends State<DoshboardPage> {
           style: Theme.of(context).textTheme.bodyLarge,
         ),
         SizedBox(height: height / 100),
-        const Divider(height: 2, color: AppColors.lightGrey),
-        SizedBox(height: height / 80),
         Container(
-          width: 70,
-          height: 35,
+          width: 50,
+          height: 30,
           decoration: BoxDecoration(
             border: Border.all(color: AppColors.purple, width: 2),
             borderRadius: const BorderRadius.all(
-              Radius.circular(4),
+              Radius.circular(6),
             ),
           ),
           child: Center(
@@ -209,7 +203,9 @@ class _DoshboardPageState extends State<DoshboardPage> {
                   ?.copyWith(color: AppColors.purple),
             ),
           ),
-        )
+        ),
+        SizedBox(height: height / 80),
+        const Divider(height: 2, color: AppColors.lightGrey),
       ],
     );
   }

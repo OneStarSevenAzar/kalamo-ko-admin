@@ -9,7 +9,14 @@ class CustomAppbar extends StatefulWidget {
 }
 
 class _CustomAppbarState extends State<CustomAppbar> {
-  String? selectedValue = 'نام آرایشگاه';
+  List<String> myShops = ['نام آرایشگاه', 'نام آرایشگاه 2'];
+  String? selectedValue;
+
+  @override
+  void initState() {
+    super.initState();
+    selectedValue = myShops[0];
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -49,11 +56,15 @@ class _CustomAppbarState extends State<CustomAppbar> {
               border: Border.all(color: AppColors.lightGrey),
             ),
             child: DropdownButton<String>(
-              alignment: Alignment.centerLeft,
+              borderRadius: const BorderRadius.all(Radius.circular(8)),
+              alignment: Alignment.centerRight,
               underline: const SizedBox(),
-              icon: const SizedBox(),
+              icon: const Padding(
+                padding: EdgeInsets.only(left: 3),
+                child: Icon(Icons.keyboard_arrow_down_rounded),
+              ),
               value: selectedValue,
-              items: ['نام آرایشگاه'].map((String value) {
+              items: myShops.map((String value) {
                 return DropdownMenuItem<String>(
                   value: value,
                   child: Row(
@@ -80,9 +91,6 @@ class _CustomAppbarState extends State<CustomAppbar> {
                             .displaySmall
                             ?.copyWith(color: AppColors.black),
                       ),
-                      const SizedBox(width: 3),
-                      const Icon(Icons.keyboard_arrow_down_sharp),
-                      const SizedBox(width: 3),
                     ],
                   ),
                 );

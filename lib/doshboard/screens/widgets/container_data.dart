@@ -15,41 +15,33 @@ class ContainerData extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Container(
-          width: 150,
-          height: 100,
-          decoration: const BoxDecoration(
-            color: AppColors.lightGrey2,
-            borderRadius: BorderRadius.all(
-              Radius.circular(16),
-            ),
+    return Container(
+      padding: const EdgeInsets.all(10),
+      margin: const EdgeInsets.all(8),
+      width: 170,
+      height: 200,
+      decoration: const BoxDecoration(
+        color: AppColors.lightGrey2,
+        borderRadius: BorderRadius.all(Radius.circular(16)),
+      ),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Icon(
+            icon,
+            color: AppColors.grey,
           ),
-          child: Padding(
-            padding: const EdgeInsets.all(7),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const Icon(
-                  Icons.settings,
-                  color: AppColors.grey,
-                ),
-                Text(
-                  title,
-                  style: Theme.of(context).textTheme.displayLarge,
-                ),
-                Text(
-                  number.toString(),
-                  style: Theme.of(context).textTheme.titleLarge,
-                ),
-              ],
-            ),
+          Text(
+            title,
+            style: Theme.of(context).textTheme.displayLarge,
           ),
-        ),
-      ],
+          Text(
+            number.toString(),
+            style: Theme.of(context).textTheme.titleLarge,
+          ),
+        ],
+      ),
     );
   }
 }
