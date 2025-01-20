@@ -43,7 +43,10 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: _screens[_currentIndex],
+      body: IndexedStack(
+        index: _currentIndex,
+        children: _screens,
+      ),
       bottomNavigationBar: Container(
         height: 70,
         decoration: const BoxDecoration(
@@ -52,6 +55,8 @@ class _MyAppState extends State<MyApp> {
           ),
         ),
         child: BottomNavigationBar(
+          elevation: 0,
+          type: BottomNavigationBarType.fixed,
           selectedItemColor: AppColors.purple,
           unselectedItemColor: AppColors.bottomSheetColor,
           showUnselectedLabels: true,

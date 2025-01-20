@@ -6,7 +6,7 @@ import 'package:shop_style/common/configs/widgets/column_chart.dart';
 class CustomListView extends StatefulWidget {
   const CustomListView({super.key, required this.type});
 
-  final TypeListView type;
+  final TypeListViewEnum type;
 
   @override
   State<CustomListView> createState() => _CustomListViewState();
@@ -35,14 +35,14 @@ class _CustomListViewState extends State<CustomListView> {
                 children: [
                   AnimatedContainer(
                     duration: const Duration(milliseconds: 400),
-                    height: widget.type == TypeListView.poroduct
+                    height: widget.type == TypeListViewEnum.poroduct
                         ? selectedIndex == index
                             ? 350
                             : 280
                         : selectedIndex == index
                             ? 350
                             : 125,
-                    width: widget.type == TypeListView.poroduct
+                    width: widget.type == TypeListViewEnum.poroduct
                         ? selectedIndex == index
                             ? 320
                             : 150
@@ -65,17 +65,17 @@ class _CustomListViewState extends State<CustomListView> {
                             left: 3,
                             child: Visibility(
                               visible:
-                                  widget.type == TypeListView.barberArtist &&
+                                  widget.type == TypeListViewEnum.barberArtist &&
                                       selectedIndex == index,
                               child: const Icon(Icons.menu),
                             ),
                           ),
                           Positioned(
-                            right: widget.type == TypeListView.barberArtist &&
+                            right: widget.type == TypeListViewEnum.barberArtist &&
                                     selectedIndex != index
                                 ? 6
                                 : 0,
-                            top: widget.type == TypeListView.poroduct
+                            top: widget.type == TypeListViewEnum.poroduct
                                 ? selectedIndex == index
                                     ? 8
                                     : 0
@@ -84,7 +84,7 @@ class _CustomListViewState extends State<CustomListView> {
                               borderRadius: BorderRadius.vertical(
                                 top: const Radius.circular(12),
                                 bottom: Radius.circular(
-                                  widget.type == TypeListView.poroduct &&
+                                  widget.type == TypeListViewEnum.poroduct &&
                                           selectedIndex != index
                                       ? 0
                                       : 12,
@@ -92,12 +92,12 @@ class _CustomListViewState extends State<CustomListView> {
                               ),
                               child: AnimatedContainer(
                                 duration: const Duration(milliseconds: 500),
-                                height: widget.type == TypeListView.poroduct
+                                height: widget.type == TypeListViewEnum.poroduct
                                     ? selectedIndex == index
                                         ? 110
                                         : 150
                                     : 110,
-                                width: widget.type == TypeListView.poroduct
+                                width: widget.type == TypeListViewEnum.poroduct
                                     ? selectedIndex == index
                                         ? 110
                                         : 150
@@ -162,7 +162,7 @@ class _CustomListViewState extends State<CustomListView> {
             const Icon(Icons.star_rounded, size: 20),
           ],
         ),
-        widget.type == TypeListView.barberArtist
+        widget.type == TypeListViewEnum.barberArtist
             ? Text(
                 'متخصص رنگ مو',
                 style: Theme.of(context)
@@ -190,7 +190,7 @@ class _CustomListViewState extends State<CustomListView> {
                 ),
                 child: Center(
                   child: Text(
-                    widget.type == TypeListView.barberArtist
+                    widget.type == TypeListViewEnum.barberArtist
                         ? 'ویرایش آرایشگر'
                         : 'ویرایش مدل',
                     style: Theme.of(context)

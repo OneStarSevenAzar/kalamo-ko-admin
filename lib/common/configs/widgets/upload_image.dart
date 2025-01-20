@@ -1,7 +1,10 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:shop_style/common/configs/colors.dart';
 
-class UploadeImage extends StatelessWidget {
+class UploadeImage extends StatefulWidget {
   const UploadeImage({
     super.key,
     this.mainText = '',
@@ -16,6 +19,24 @@ class UploadeImage extends StatelessWidget {
   final bool importantText;
 
   @override
+  State<UploadeImage> createState() => _UploadeImageState();
+}
+
+class _UploadeImageState extends State<UploadeImage> {
+  File? _image;
+
+  Future<void> _pickImage() async {
+    final ImagePicker picker = ImagePicker();
+    final XFile? image = await picker.pickImage(source: ImageSource.gallery);
+
+    if (image != null) {
+      setState(() {
+        _image = File(image.path);
+      });
+    }
+  }
+
+  @override
   Widget build(BuildContext context) {
     final double width = MediaQuery.of(context).size.width;
 
@@ -24,30 +45,39 @@ class UploadeImage extends StatelessWidget {
       children: [
         const SizedBox(height: 20),
         Text(
-          mainText,
+          widget.mainText,
           style: Theme.of(context).textTheme.titleMedium,
         ),
         const SizedBox(height: 5),
-        importantText
+        widget.importantText
             ? getImportantAsText(context)
             : Text(
-                hintText,
+                widget.hintText,
                 style: Theme.of(context).textTheme.bodySmall,
               ),
         const SizedBox(height: 16),
-        Container(
-          width: width / 4,
-          height: width / 4,
-          decoration: BoxDecoration(
+        GestureDetector(
+          onTap: () {
+            _pickImage();
+          },
+          child: ClipRRect(
             borderRadius: const BorderRadius.all(Radius.circular(8)),
-            border: Border.all(
-              color: AppColors.grey,
+            child: Container(
+              width: width / 4,
+              height: width / 4,
+              decoration: BoxDecoration(
+                border: Border.all(
+                  color: AppColors.purple,
+                ),
+              ),
+              child: _image == null
+                  ? const Icon(
+                      Icons.drive_folder_upload_outlined,
+                      size: 50,
+                      color: AppColors.grey,
+                    )
+                  : Image.file(_image!, fit: BoxFit.cover),
             ),
-          ),
-          child: const Icon(
-            Icons.drive_folder_upload_outlined,
-            size: 50,
-            color: AppColors.grey,
           ),
         ),
       ],

@@ -38,7 +38,7 @@ class ContainerData extends StatelessWidget {
           ),
           Text(
             number.toString(),
-            style: Theme.of(context).textTheme.titleLarge,
+            style: Theme.of(context).textTheme.headlineLarge,
           ),
         ],
       ),

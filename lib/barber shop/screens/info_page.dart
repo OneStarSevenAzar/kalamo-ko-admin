@@ -57,7 +57,7 @@ class _InfoPageState extends State<InfoPage> {
                     child: EditButton(nameCategory: 'اعضای آرایشگاه'),
                   ),
                   SizedBox(height: 22),
-                  CustomListView(type: TypeListView.barberArtist),
+                  CustomListView(type: TypeListViewEnum.barberArtist),
                 ],
               ),
             ),

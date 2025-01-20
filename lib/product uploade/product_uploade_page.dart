@@ -136,7 +136,7 @@ class ProductUploadePage extends StatelessWidget {
                 child: Column(
                   children: [
                     const SizedBox(height: 40),
-                    const Divider(height: 2, color: AppColors.grey),
+                    const Divider(height: 1, color: AppColors.grey),
                     const SizedBox(height: 10),
                     Padding(
                       padding: EdgeInsets.symmetric(horizontal: basicPadding),
@@ -193,28 +193,31 @@ class ProductUploadePage extends StatelessWidget {
               style: Theme.of(context).textTheme.bodySmall,
             ),
             const SizedBox(height: 10),
-            Container(
-              width: width,
-              height: height / 18,
-              decoration: BoxDecoration(
+            ClipRRect(
+              borderRadius: const BorderRadius.all(Radius.circular(360)),
+              child: Container(
+                width: width,
+                height: height / 18,
+                decoration: BoxDecoration(
+                  color: AppColors.white,
                   border: Border.all(
                     color: AppColors.lightGrey,
-                    width: 2,
+                    width: 1,
                   ),
-                  color: AppColors.white,
-                  borderRadius: const BorderRadius.all(Radius.circular(360))),
-              child: ListView.builder(
-                scrollDirection: Axis.horizontal,
-                itemCount: 2,
-                itemBuilder: (BuildContext context, int index) {
-                  return Padding(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 5,
-                      vertical: 5,
-                    ),
-                    child: getTag(height, width, context, 'نام مدل مو'),
-                  );
-                },
+                ),
+                child: ListView.builder(
+                  scrollDirection: Axis.horizontal,
+                  itemCount: 4,
+                  itemBuilder: (BuildContext context, int index) {
+                    return Padding(
+                      padding: const EdgeInsets.symmetric(
+                        vertical: 6,
+                        horizontal: 4,
+                      ),
+                      child: getTag(height, width, context, 'نام مدل مو'),
+                    );
+                  },
+                ),
               ),
             ),
           ],

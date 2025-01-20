@@ -43,14 +43,14 @@ class _TicketReserveState extends State<TicketReserve> {
             heightSize = 450;
           } else {
             selectedIndex = -1;
-            heightSize = 250;
+            heightSize = 260;
           }
         });
       },
       child: AnimatedContainer(
         duration: const Duration(milliseconds: 400),
         width: width,
-        height: selectedIndex == index ? 250 : 60,
+        height: selectedIndex == index ? 250 : 55,
         decoration: BoxDecoration(
           border: Border.all(
             color: AppColors.lightGrey,

@@ -41,6 +41,7 @@ dependencies:
   cupertino_icons: ^1.0.8
   solar_datepicker: ^1.0.5
   flutter_carousel_widget: ^3.1.0
+  image_picker: ^1.1.2
 
 dev_dependencies:
   flutter_test:
@@ -80,10 +81,10 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
-  # fonts:
-  #   - family: Schyler
-  #     fonts:
-  #       - asset: fonts/Schyler-Regular.ttf
+  fonts:
+    - family: IRANSansDB
+      fonts:
+        - asset: assets/fonts/IRANSansXDemiBold.ttf
   #       - asset: fonts/Schyler-Italic.ttf
   #         style: italic
   #   - family: Trajan Pro

@@ -13,7 +13,7 @@ class CustomTheme {
         fontFamily: 'IRANSansDB',
         color: AppColors.black,
         fontWeight: FontWeight.w700,
-        fontSize: 24,
+        fontSize: 28,
       ),
       titleMedium: TextStyle(
         fontFamily: 'IRANSansDB',
@@ -28,6 +28,12 @@ class CustomTheme {
         fontSize: 20,
       ),
       ////////////////////////////////////////
+      bodyLarge: TextStyle(
+        fontFamily: 'IRANSansDB',
+        color: AppColors.grey,
+        fontWeight: FontWeight.w400,
+        fontSize: 20,
+      ),
       bodyMedium: TextStyle(
         fontFamily: 'IRANSansDB',
         color: AppColors.black,
@@ -77,6 +83,13 @@ class CustomTheme {
         color: AppColors.grey2,
         fontWeight: FontWeight.w400,
         fontSize: 10,
+      ),
+      ////////////////////////////////////
+      headlineLarge: TextStyle(
+        fontFamily: 'IRANSansDB',
+        color: AppColors.black,
+        fontWeight: FontWeight.w700,
+        fontSize: 24,
       ),
     ),
   );
