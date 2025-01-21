@@ -1,5 +1,6 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:shop_style/barber%20shop/screens/barber_shop.dart';
 import 'package:shop_style/common/configs/colors.dart';
 import 'package:shop_style/common/configs/theme.dart';
@@ -7,9 +8,21 @@ import 'package:shop_style/doshboard/screens/doshboard_page.dart';
 import 'package:shop_style/home/screens/home_screen.dart';
 import 'package:shop_style/pervice/services_page.dart';
 import 'package:shop_style/product%20uploade/product_uploade_page.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart'; // فایل لوکالیزیشن
 
 void main() {
   runApp(MaterialApp(
+    localizationsDelegates: const [
+      AppLocalizations.delegate,
+      GlobalMaterialLocalizations.delegate,
+      GlobalWidgetsLocalizations.delegate,
+      GlobalCupertinoLocalizations.delegate,
+    ],
+    supportedLocales: const [
+      Locale('en', 'US'), // زبان انگلیسی
+      Locale('fa', 'IR'), // زبان فارسی
+    ],
+    locale: const Locale('fa', ''), // زبان پیشفرض (فارسی)
     theme: CustomTheme().lighTheme,
     scrollBehavior: const MaterialScrollBehavior().copyWith(
       dragDevices: {
@@ -33,11 +46,11 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   int _currentIndex = 0;
   final List<Widget> _screens = const [
-    BarberShop(),
-    HomeScreen(),
-    ProductUploadePage(),
-    ServicesPage(),
     DoshboardPage(),
+    ServicesPage(),
+    ProductUploadePage(),
+    HomeScreen(),
+    BarberShop(),
   ];
 
   @override
@@ -74,24 +87,24 @@ class _MyAppState extends State<MyApp> {
           },
           items: const [
             BottomNavigationBarItem(
-              icon: Icon(Icons.shop_rounded),
-              label: 'آرایشگاه',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.chat),
-              label: 'چت',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.add_business_rounded),
-              label: 'افزودن آگهی',
+              icon: Icon(Icons.dashboard),
+              label: 'داشبورد',
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.room_service_rounded),
               label: 'خدمات',
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.dashboard),
-              label: 'داشبورد',
+              icon: Icon(Icons.add_business_rounded),
+              label: 'افزودن آگهی',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.chat),
+              label: 'چت',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.shop_rounded),
+              label: 'آرایشگاه',
             ),
           ],
         ),

@@ -66,6 +66,7 @@ class _UploadeImageState extends State<UploadeImage> {
               width: width / 4,
               height: width / 4,
               decoration: BoxDecoration(
+                borderRadius: const BorderRadius.all(Radius.circular(8)),
                 border: Border.all(
                   color: AppColors.purple,
                 ),

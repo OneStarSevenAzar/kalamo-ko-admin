@@ -46,7 +46,7 @@ class _BarberShopState extends State<BarberShop> {
                     ],
                   ),
                 ),
-                const SliverPadding(padding: EdgeInsets.only(top: 15)),         
+                const SliverPadding(padding: EdgeInsets.only(top: 50)),         
               ],
             ),
           ),

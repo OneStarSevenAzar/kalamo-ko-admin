@@ -17,6 +17,7 @@ class CustomTextBox extends StatefulWidget {
 
 class _CustomTextBoxState extends State<CustomTextBox> {
   final TextEditingController controller = TextEditingController();
+  FocusNode focusNode = FocusNode();
   String nameShop = '';
   bool absorbingTextfield = true;
 
@@ -50,6 +51,7 @@ class _CustomTextBoxState extends State<CustomTextBox> {
                   child: AbsorbPointer(
                     absorbing: absorbingTextfield,
                     child: TextField(
+                      focusNode: focusNode,
                       style: Theme.of(context)
                           .textTheme
                           .bodyMedium
@@ -69,6 +71,9 @@ class _CustomTextBoxState extends State<CustomTextBox> {
                   onTap: () {
                     setState(() {
                       absorbingTextfield = !absorbingTextfield;
+                      absorbingTextfield
+                          ? focusNode.unfocus()
+                          : focusNode.requestFocus();
                     });
                   },
                   child: const Icon(Icons.mode_rounded),

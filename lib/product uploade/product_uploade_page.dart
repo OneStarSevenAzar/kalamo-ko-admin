@@ -25,7 +25,7 @@ class ProductUploadePage extends StatelessWidget {
                 padding: EdgeInsets.only(
                   left: basicPadding,
                   right: basicPadding,
-                  top: 10,
+                  top: 40,
                   bottom: 15,
                 ),
                 sliver: SliverToBoxAdapter(
@@ -89,12 +89,14 @@ class ProductUploadePage extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
+                      const SizedBox(height: 15),
                       const SelectItem(
                         nameItem: 'اجرای مدل چند دقیقه طول میکشد؟',
                         items: ['a', 'b', 'c'],
                       ),
                       const SizedBox(height: 15),
                       const Divider(height: 2, color: AppColors.grey),
+                      const SizedBox(height: 15),
                       const SelectItem(
                         nameItem: 'دستمزد انجام کار (قیمت به تومان)',
                         items: ['b', 'c'],
@@ -107,6 +109,7 @@ class ProductUploadePage extends StatelessWidget {
                             .displaySmall
                             ?.copyWith(color: AppColors.red),
                       ),
+                      const SizedBox(height: 15),
                       const SelectItem(
                         nameItem: 'پیش پرداخت رزرو نوبت',
                         hintText:
@@ -114,6 +117,7 @@ class ProductUploadePage extends StatelessWidget {
                         items: ['a', 'b', 'c'],
                         selectItemEnum: SelectItemEnum.selectFordate,
                       ),
+                      const SizedBox(height: 15),
                       const SelectItem(
                         nameItem: 'تخفیف های روزانه (اختیاری)',
                         hintText:

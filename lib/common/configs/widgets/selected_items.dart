@@ -51,7 +51,7 @@ class _SelectItemState extends State<SelectItem> {
                 style: widget.style ?? Theme.of(context).textTheme.bodyMedium,
               ),
               const Spacer(),
-              widget.selectItemEnum == SelectItemEnum.seletForList
+              widget.selectItemEnum != SelectItemEnum.selectFordate
                   ? getDropdown(height, context)
                   : Container(
                       width: width / 6,
@@ -71,6 +71,9 @@ class _SelectItemState extends State<SelectItem> {
                     ),
             ],
           ),
+          widget.selectItemEnum != SelectItemEnum.selectFordate
+              ? const SizedBox(height: 0)
+              : const SizedBox(height: 10),
           widget.hintText == null
               ? const SizedBox()
               : Text(

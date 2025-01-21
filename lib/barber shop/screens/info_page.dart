@@ -6,6 +6,7 @@ import 'package:shop_style/barber%20shop/widgets/time_work.dart';
 import 'package:shop_style/common/configs/colors.dart';
 import 'package:shop_style/common/configs/enums.dart';
 import 'package:shop_style/common/configs/widgets/custom_list_view.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart'; // فایل لوکالیزیشن
 
 class InfoPage extends StatefulWidget {
   const InfoPage({super.key});
@@ -24,22 +25,22 @@ class _InfoPageState extends State<InfoPage> {
       body: SafeArea(
         child: CustomScrollView(
           slivers: <Widget>[
-            const SliverPadding(
+            SliverPadding(
               padding: bacePadding,
               sliver: SliverToBoxAdapter(
                 child: Column(
                   children: [
-                    CustomTextBox(
+                    const CustomTextBox(
                       mainText: 'نام کامل آرایشگاه',
                       hintTextfield: 'نام کامل آرایشگاه',
                     ),
-                    SizedBox(height: 10),
+                    const SizedBox(height: 10),
                     InputBox(
                       mainText: 'توضیحات آرایشگاه',
-                      hintTextfield: 'توضیحاتی را درمورد آرایشگاه خود بنوسید.',
+                      hintTextfield: AppLocalizations.of(context)!.barbershop_description,
                     ),
-                    SizedBox(height: 10),
-                    CustomTextBox(
+                    const SizedBox(height: 10),
+                    const CustomTextBox(
                       mainText: 'آدرس وبسایت',
                       hintTextfield:
                           'در صورتی که وبسایت دارید آدرس آن را بنویسید',

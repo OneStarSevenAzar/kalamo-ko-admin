@@ -14,7 +14,7 @@ class _CustomAppbarState extends State<CustomAppbar> {
 
   @override
   void initState() {
-    super.initState();
+    super.initState();    
     selectedValue = myShops[0];
   }
 

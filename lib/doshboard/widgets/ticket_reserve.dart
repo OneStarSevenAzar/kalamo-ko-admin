@@ -19,7 +19,7 @@ class _TicketReserveState extends State<TicketReserve> {
     final double width = MediaQuery.of(context).size.width;
 
     return AnimatedContainer(
-      duration: const Duration(milliseconds: 400),
+      duration: const Duration(milliseconds: 200),
       height: heightSize,
       child: ListView.builder(
         physics: const NeverScrollableScrollPhysics(),
@@ -48,7 +48,7 @@ class _TicketReserveState extends State<TicketReserve> {
         });
       },
       child: AnimatedContainer(
-        duration: const Duration(milliseconds: 400),
+        duration: const Duration(milliseconds: 200),
         width: width,
         height: selectedIndex == index ? 250 : 55,
         decoration: BoxDecoration(

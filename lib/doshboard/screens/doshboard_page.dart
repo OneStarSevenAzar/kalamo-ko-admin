@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:shop_style/common/configs/colors.dart';
+import 'package:shop_style/common/configs/enums.dart';
 import 'package:shop_style/common/configs/widgets/custom_appbar.dart';
 import 'package:shop_style/common/configs/widgets/fake_page.dart';
+import 'package:shop_style/common/configs/widgets/percentage_box.dart';
+import 'package:shop_style/common/configs/widgets/selected_items.dart';
 import 'package:shop_style/common/configs/widgets/show_more_button.dart';
 import 'package:shop_style/common/configs/widgets/user_comments.dart';
-import 'package:shop_style/doshboard/screens/widgets/container_data.dart';
-import 'package:shop_style/doshboard/screens/widgets/ticket_reserve.dart';
+import 'package:shop_style/doshboard/widgets/container_data.dart';
+import 'package:shop_style/doshboard/widgets/ticket_reserve.dart';
 
 class DoshboardPage extends StatefulWidget {
   const DoshboardPage({super.key});
@@ -108,6 +111,7 @@ class _DoshboardPageState extends State<DoshboardPage> {
                         'نظرات اخیر',
                         style: Theme.of(context).textTheme.titleLarge,
                       ),
+                      const SizedBox(height: 25),
                       SizedBox(
                         height: 650,
                         child: ListView.builder(
@@ -142,10 +146,24 @@ class _DoshboardPageState extends State<DoshboardPage> {
   }
 }
 
-class ViewComments extends StatelessWidget {
+class ViewComments extends StatefulWidget {
   const ViewComments({
     super.key,
   });
+
+  @override
+  State<ViewComments> createState() => _ViewCommentsState();
+}
+
+class _ViewCommentsState extends State<ViewComments> {
+  List<String> myShops = ['جدیدترین', 'ترین'];
+  String? selectedValue;
+
+  @override
+  void initState() {
+    super.initState();
+    selectedValue = myShops[0];
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -217,27 +235,44 @@ class ViewComments extends StatelessWidget {
                   ),
                   SizedBox(width: width / 40),
                   Container(
-                    width: 110,
-                    height: 35,
+                    height: width / 10,
                     decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(24),
-                      border: Border.all(
-                        width: 2,
-                        color: AppColors.grey,
+                      borderRadius: const BorderRadius.all(
+                        Radius.circular(360),
                       ),
+                      border: Border.all(color: AppColors.lightGrey),
                     ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          'جدیدترین',
-                          style: Theme.of(context)
-                              .textTheme
-                              .labelSmall
-                              ?.copyWith(color: AppColors.black),
-                        ),
-                        const Icon(Icons.keyboard_arrow_down_rounded),
-                      ],
+                    child: DropdownButton<String>(
+                      borderRadius: const BorderRadius.all(Radius.circular(8)),
+                      alignment: Alignment.center,
+                      underline: const SizedBox(),
+                      icon: const Padding(
+                        padding: EdgeInsets.only(left: 3),
+                        child: Icon(Icons.keyboard_arrow_down_rounded),
+                      ),
+                      value: selectedValue,
+                      items: myShops.map((String value) {
+                        return DropdownMenuItem<String>(
+                          value: value,
+                          child: Row(
+                            children: [
+                              const SizedBox(width: 12),
+                              Text(
+                                value,
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .displaySmall
+                                    ?.copyWith(color: AppColors.black),
+                              ),
+                            ],
+                          ),
+                        );
+                      }).toList(),
+                      onChanged: (String? newValue) {
+                        setState(() {
+                          selectedValue = newValue;
+                        });
+                      },
                     ),
                   ),
                 ],
@@ -255,121 +290,6 @@ class ViewComments extends StatelessWidget {
           itemCount: 6,
         ),
       ],
-    );
-  }
-}
-
-///////////////////////
-
-class PercentageBox extends StatelessWidget {
-  const PercentageBox({
-    super.key,
-    required this.scores,
-    required this.selectedScores,
-  });
-
-  final List<int> scores;
-  final int selectedScores;
-
-  @override
-  Widget build(BuildContext context) {
-    final double width = MediaQuery.of(context).size.width;
-    final double height = MediaQuery.of(context).size.height;
-
-    // فرمول ریاضی برای محاسبه درصد//
-    final int sum = scores[0] + scores[1] + scores[2] + scores[3] + scores[4];
-    final int trySum = sum == 0 ? 1 : sum;
-    final double percentage = selectedScores * 100 / trySum;
-    final double percetageWid =
-        (width / 1.44) - (percentage * (width / 1.44) / 100);
-    // فرمول ریاضی برای محاسبه درصد//
-
-    return Container(
-      margin: EdgeInsets.only(
-        top: height / 50,
-        bottom: height / 50,
-        right: width / 10,
-        left: width / 15,
-      ),
-      decoration: const BoxDecoration(
-        borderRadius: BorderRadius.all(Radius.circular(365)),
-        color: Color(0xFFE5E5E5),
-      ),
-      height: height / 200,
-      child: Padding(
-        padding: EdgeInsets.only(right: percetageWid),
-        child: Container(
-          decoration: const BoxDecoration(
-            borderRadius: BorderRadius.all(Radius.circular(365)),
-            color: Color(0xFF0D1619),
-          ),
-          height: height / 200,
-        ),
-      ),
-    );
-  }
-}
-
-//////////////////////
-class PercentageBoxScore extends StatefulWidget {
-  const PercentageBoxScore({super.key});
-
-  @override
-  State<PercentageBoxScore> createState() => _PercentageBoxScoreState();
-}
-
-class _PercentageBoxScoreState extends State<PercentageBoxScore> {
-  int selectedIndex = -1;
-  List<int> numberScore = [5, 4, 3, 2, 1];
-
-  @override
-  Widget build(BuildContext context) {
-    final double width = MediaQuery.of(context).size.width;
-
-    final List<int> listScore = [55, 30, 16, 0, 1];
-    return ListView.builder(
-      itemCount: 5,
-      itemBuilder: (BuildContext context, int index) {
-        return Stack(
-          alignment: Alignment.center,
-          children: [
-            Positioned(
-              right: -width / 50,
-              child: Checkbox(
-                splashRadius: 5,
-                focusColor: Colors.transparent,
-                hoverColor: Colors.transparent,
-                checkColor: Colors.transparent,
-                activeColor: AppColors.purple,
-                value: selectedIndex == index,
-                onChanged: (value) {
-                  setState(() {
-                    selectedIndex = value! ? index : -1;
-                  });
-                },
-              ),
-            ),
-            Positioned(
-              right: width / 15,
-              child: Text(
-                numberScore[index].toString(),
-                style: Theme.of(context).textTheme.labelSmall,
-              ),
-            ),
-            PercentageBox(
-              selectedScores: listScore[index],
-              scores: listScore,
-            ),
-            Positioned(
-              left: 0,
-              child: Text(
-                listScore[index].toString(),
-                style: Theme.of(context).textTheme.labelSmall,
-              ),
-            ),
-          ],
-        );
-      },
     );
   }
 }

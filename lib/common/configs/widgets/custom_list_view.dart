@@ -13,28 +13,34 @@ class CustomListView extends StatefulWidget {
 }
 
 class _CustomListViewState extends State<CustomListView> {
-  int selectedIndex = 0;
+  int selectedIndex = -1;
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 340,
+      height: selectedIndex != -1
+          ? 340
+          : widget.type == TypeListViewEnum.barberArtist
+              ? 125
+              : 300,
       child: ListView.builder(
         itemCount: 3,
         scrollDirection: Axis.horizontal,
         itemBuilder: (BuildContext context, int index) {
           return Padding(
-            padding: EdgeInsets.symmetric(horizontal: index == 0 ? 0 : 16),
+            padding: const EdgeInsets.symmetric(horizontal: 10),
             child: GestureDetector(
               onTap: () {
                 setState(() {
-                  selectedIndex = index;
+                  selectedIndex == index
+                      ? selectedIndex = -1
+                      : selectedIndex = index;
                 });
               },
               child: Stack(
                 children: [
                   AnimatedContainer(
-                    duration: const Duration(milliseconds: 400),
+                    duration: const Duration(milliseconds: 250),
                     height: widget.type == TypeListViewEnum.poroduct
                         ? selectedIndex == index
                             ? 350
@@ -64,17 +70,18 @@ class _CustomListViewState extends State<CustomListView> {
                             top: 9,
                             left: 3,
                             child: Visibility(
-                              visible:
-                                  widget.type == TypeListViewEnum.barberArtist &&
-                                      selectedIndex == index,
+                              visible: widget.type ==
+                                      TypeListViewEnum.barberArtist &&
+                                  selectedIndex == index,
                               child: const Icon(Icons.menu),
                             ),
                           ),
                           Positioned(
-                            right: widget.type == TypeListViewEnum.barberArtist &&
-                                    selectedIndex != index
-                                ? 6
-                                : 0,
+                            right:
+                                widget.type == TypeListViewEnum.barberArtist &&
+                                        selectedIndex != index
+                                    ? 6
+                                    : 0,
                             top: widget.type == TypeListViewEnum.poroduct
                                 ? selectedIndex == index
                                     ? 8
@@ -91,7 +98,7 @@ class _CustomListViewState extends State<CustomListView> {
                                 ),
                               ),
                               child: AnimatedContainer(
-                                duration: const Duration(milliseconds: 500),
+                                duration: const Duration(milliseconds: 250),
                                 height: widget.type == TypeListViewEnum.poroduct
                                     ? selectedIndex == index
                                         ? 110
@@ -110,7 +117,7 @@ class _CustomListViewState extends State<CustomListView> {
                             ),
                           ),
                           Positioned(
-                            left: selectedIndex == index ? 0 : 45,
+                            left: selectedIndex == index ? 0 : 40,
                             top: selectedIndex == index ? 8 : 160,
                             child: getTexts(context, index),
                           ),
