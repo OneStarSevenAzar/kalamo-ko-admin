@@ -45,6 +45,10 @@ dependencies:
   solar_datepicker: ^1.0.5
   flutter_carousel_widget: ^3.1.0
   image_picker: ^1.1.2
+  
+dependency_overrides:
+  font_awesome_flutter:
+    path: include/font_awesome
 
 dev_dependencies:
   flutter_test:

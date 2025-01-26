@@ -45,7 +45,7 @@ class _CustomAppbarState extends State<CustomAppbar> {
           const SizedBox(width: 10),
           const Icon(Icons.search, size: 25),
           const SizedBox(width: 10),
-          const Icon(Icons.add_circle_outline_rounded, size: 25),
+          // const Icon(Icons.add_circle_outline_rounded, size: 25),
           const Spacer(),
           Container(
             height: width / 10,

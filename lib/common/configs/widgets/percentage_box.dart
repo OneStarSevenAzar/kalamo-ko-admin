@@ -67,6 +67,7 @@ class _PercentageBoxScoreState extends State<PercentageBoxScore> {
 
     final List<int> listScore = [55, 30, 16, 0, 1];
     return ListView.builder(
+      physics: const NeverScrollableScrollPhysics(),
       itemCount: 5,
       itemBuilder: (BuildContext context, int index) {
         return Stack(

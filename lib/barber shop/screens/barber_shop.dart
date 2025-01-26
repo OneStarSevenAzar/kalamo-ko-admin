@@ -22,7 +22,6 @@ class _BarberShopState extends State<BarberShop> {
           child: Directionality(
             textDirection: TextDirection.rtl,
             child: CustomScrollView(
-              physics: const NeverScrollableScrollPhysics(),
               slivers: [
                 const SliverPadding(
                   padding: EdgeInsets.only(left: 22),
@@ -36,17 +35,14 @@ class _BarberShopState extends State<BarberShop> {
                     tabs: const ['اطلاعات آرایشگاه', 'شخصی سازی فروشگاه'],
                     content: const [
                       SizedBox(
-                        height: 800,
                         child: InfoPage(),
                       ),
                       SizedBox(
-                        height: 800,
                         child: CustomaizePage(),
                       ),
                     ],
                   ),
                 ),
-                const SliverPadding(padding: EdgeInsets.only(top: 50)),         
               ],
             ),
           ),

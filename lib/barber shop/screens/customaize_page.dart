@@ -7,14 +7,13 @@ class CustomaizePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: const Color(0xFFFFFFFF),
-      body: SafeArea(
-        child: Padding(
+    return Padding(
           padding: const EdgeInsets.only(left: 22),
           child: Directionality(
             textDirection: TextDirection.rtl,
             child: CustomScrollView(
+              shrinkWrap: true,
+              physics: const NeverScrollableScrollPhysics(),
               slivers: [
                 SliverToBoxAdapter(
                   child: Column(
@@ -53,8 +52,6 @@ class CustomaizePage extends StatelessWidget {
               ],
             ),
           ),
-        ),
-      ),
-    );
+        );
   }
 }

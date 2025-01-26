@@ -1,3 +1,8 @@
 {
-  "barbershop_description": "توضیحاتی را در مورد آرایشگاه خود بنویسید."
+  "barbershop_description": "توضیحاتی را در مورد آرایشگاه خود بنویسید.",
+  "card_items": "نمای کلی",
+  "history_comment": "نظرات اخیر",
+  "show_more_butten": "مشاهده همه",
+  "views_comment": "دیدگاه ها",
+  "sorting": "مرتب سازی:"
 }

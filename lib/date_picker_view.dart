@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shamsi_date/shamsi_date.dart';
+import 'package:shop_style/common/configs/colors.dart';
 
 enum DatePickerView { date, month, year }
 
@@ -77,35 +78,25 @@ class DatePickerWidgetBaseState extends State<DatePickerWidgetBase> {
     return Directionality(
       textDirection: TextDirection.rtl,
       child: Container(
-        color: Colors.white,
-        height: 254,
+        decoration: const BoxDecoration(
+          color: AppColors.lightGrey2,
+          borderRadius: BorderRadius.all(Radius.circular(22)),
+        ),
+        height: 300,
         width: 280,
         child: Column(
           children: [
             _appBarOfTheDatePicker(theme),
-            Divider(
-              height: 1,
-              color: Colors.black.withOpacity(0.06),
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(
-                horizontal: 12,
-              ),
-              child: SizedBox(
-                height: 213,
-                width: 280,
-                child: AnimatedSwitcher(
-                  duration: const Duration(milliseconds: 300),
-                  transitionBuilder:
-                      (Widget child, Animation<double> animation) {
-                    return FadeTransition(
-                      opacity: animation,
-                      child: child,
-                    );
-                  },
-                  child: _getCurrentViewWidget(theme, totalDays),
-                ),
-              ),
+            AnimatedSwitcher(
+              duration: const Duration(milliseconds: 300),
+              transitionBuilder:
+                  (Widget child, Animation<double> animation) {
+                return FadeTransition(
+                  opacity: animation,
+                  child: child,
+                );
+              },
+              child: _getCurrentViewWidget(theme, totalDays),
             ),
           ],
         ),
@@ -113,6 +104,7 @@ class DatePickerWidgetBaseState extends State<DatePickerWidgetBase> {
     );
   }
 
+/////////////
   Widget _appBarOfTheDatePicker(ThemeData theme) {
     return Padding(
       padding: const EdgeInsets.symmetric(
@@ -122,57 +114,55 @@ class DatePickerWidgetBaseState extends State<DatePickerWidgetBase> {
         height: 40,
         width: 280,
         child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             _navigationArrows(isLeft: false),
-            Row(
-              children: [
-                InkWell(
-                  hoverColor: Colors.transparent,
-                  splashColor: Colors.transparent,
-                  highlightColor: Colors.transparent,
-                  onTap: () {
-                    setState(() {
-                      _currentView = DatePickerView.year;
-                    });
-                  },
-                  onHover: (hovering) {
-                    setState(() {
-                      _isYearHovered = hovering;
-                    });
-                  },
-                  child: Text(
-                    '${_currentViewDate.year}',
-                    style: theme.textTheme.titleSmall?.copyWith(
-                      color: _isYearHovered ? Colors.blue : Colors.black,
-                    ),
-                  ),
+            const Spacer(),
+            InkWell(
+              hoverColor: Colors.transparent,
+              splashColor: Colors.transparent,
+              highlightColor: Colors.transparent,
+              onTap: () {
+                setState(() {
+                  _currentView = DatePickerView.year;
+                });
+              },
+              onHover: (hovering) {
+                setState(() {
+                  _isYearHovered = hovering;
+                });
+              },
+              child: Text(
+                '${_currentViewDate.year}',
+                style: theme.textTheme.titleSmall?.copyWith(
+                  color: _isYearHovered ? Colors.blue : Colors.black,
                 ),
-                const SizedBox(width: 8),
-                InkWell(
-                  hoverColor: Colors.transparent,
-                  splashColor: Colors.transparent,
-                  highlightColor: Colors.transparent,
-                  onTap: () {
-                    setState(() {
-                      _currentView = DatePickerView.month;
-                    });
-                  },
-                  onHover: (hovering) {
-                    setState(() {
-                      _isMonthHovered = hovering;
-                    });
-                  },
-                  child: Text(
-                    formatMonthPersian(_currentViewDate),
-                    style: theme.textTheme.titleSmall?.copyWith(
-                      color: _isMonthHovered ? Colors.blue : Colors.black,
-                    ),
-                  ),
-                ),
-              ],
+              ),
             ),
+            const SizedBox(width: 8),
+            InkWell(
+              hoverColor: Colors.transparent,
+              splashColor: Colors.transparent,
+              highlightColor: Colors.transparent,
+              onTap: () {
+                setState(() {
+                  _currentView = DatePickerView.month;
+                });
+              },
+              onHover: (hovering) {
+                setState(() {
+                  _isMonthHovered = hovering;
+                });
+              },
+              child: Text(
+                formatMonthPersian(_currentViewDate),
+                style: theme.textTheme.titleSmall?.copyWith(
+                  color: _isMonthHovered ? Colors.blue : Colors.black,
+                ),
+              ),
+            ),
+            const Spacer(),
             _navigationArrows(isLeft: true),
           ],
         ),
@@ -183,23 +173,21 @@ class DatePickerWidgetBaseState extends State<DatePickerWidgetBase> {
   Widget _navigationArrows({required bool isLeft}) {
     return Row(
       children: [
-        if (isLeft) ...[
-          _arrowButton(Icons.arrow_left, _goToNextMonth),
-          const SizedBox(width: 8),
-          _arrowButton(Icons.arrow_left, _goToNextYear),
-        ],
-        if (!isLeft) ...[
-          _arrowButton(Icons.arrow_right, _goToPreviousYear),
-          const SizedBox(width: 8),
-          _arrowButton(Icons.arrow_right, _goToPreviousMonth),
-        ],
+        if (isLeft) _arrowButton(Icons.arrow_forward_ios, _goToNextMonth),
+        if (!isLeft) _arrowButton(Icons.arrow_back_ios, _goToPreviousMonth),
       ],
     );
   }
 
-  Widget _arrowButton(IconData icon, VoidCallback onTap) {
-    return SizedBox(
-      width: 35,
+  Widget _arrowButton(
+    IconData icon,
+    VoidCallback onTap,
+  ) {
+    return Container(
+      decoration: const BoxDecoration(
+        color: AppColors.white,
+        shape: BoxShape.circle,
+      ),
       child: IconButton(
         onPressed: onTap,
         icon: Icon(
@@ -209,6 +197,8 @@ class DatePickerWidgetBaseState extends State<DatePickerWidgetBase> {
       ),
     );
   }
+
+/////////////
 
   Widget _calendarsTable(int totalDays, ThemeData theme) {
     return SizedBox(
@@ -470,20 +460,6 @@ class DatePickerWidgetBaseState extends State<DatePickerWidgetBase> {
       }
 
       _currentViewDate = Jalali(previousYear, previousMonth, 1);
-    });
-  }
-
-  void _goToNextYear() {
-    setState(() {
-      int currentYear = _currentViewDate.year + 1;
-      _currentViewDate = Jalali(currentYear, _currentViewDate.month, 1);
-    });
-  }
-
-  void _goToPreviousYear() {
-    setState(() {
-      int currentYear = _currentViewDate.year - 1;
-      _currentViewDate = Jalali(currentYear, _currentViewDate.month, 1);
     });
   }
 

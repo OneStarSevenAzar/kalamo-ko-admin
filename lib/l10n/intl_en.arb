@@ -1,3 +1,8 @@
 {
-    "barbershop_description": "Write a description about your barbershop."
+  "barbershop_description": "Write a description about your barbershop.",
+  "card_items": "Overview",
+  "history_comment": "Recent comments",
+  "show_more_butten": "view all",
+  "views_comment": "Views",
+  "sorting": "sorting:"
 }

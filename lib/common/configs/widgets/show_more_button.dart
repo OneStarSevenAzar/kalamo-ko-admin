@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shop_style/common/configs/colors.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class ShowMoreButton extends StatelessWidget {
   const ShowMoreButton({
@@ -31,7 +32,7 @@ class ShowMoreButton extends StatelessWidget {
         ),
         child: Center(
           child: Text(
-            'مشاهده همه',
+            AppLocalizations.of(context)!.show_more_butten,
             style: Theme.of(context).textTheme.titleMedium,
           ),
         ),

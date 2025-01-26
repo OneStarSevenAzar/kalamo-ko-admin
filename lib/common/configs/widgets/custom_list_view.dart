@@ -37,105 +37,107 @@ class _CustomListViewState extends State<CustomListView> {
                       : selectedIndex = index;
                 });
               },
-              child: Stack(
-                children: [
-                  AnimatedContainer(
-                    duration: const Duration(milliseconds: 250),
-                    height: widget.type == TypeListViewEnum.poroduct
-                        ? selectedIndex == index
-                            ? 350
-                            : 280
-                        : selectedIndex == index
-                            ? 350
-                            : 125,
-                    width: widget.type == TypeListViewEnum.poroduct
-                        ? selectedIndex == index
-                            ? 320
-                            : 150
-                        : selectedIndex == index
-                            ? 320
-                            : 125,
-                    decoration: BoxDecoration(
-                      borderRadius: const BorderRadius.all(Radius.circular(12)),
-                      border: Border.all(color: AppColors.lightGrey),
-                    ),
-                    child: Padding(
-                      padding: EdgeInsets.symmetric(
-                        horizontal: selectedIndex == index ? 8 : 0,
+              child: SizedBox(
+                child: Stack(
+                  children: [
+                    AnimatedContainer(
+                      duration: const Duration(milliseconds: 250),
+                      height: widget.type == TypeListViewEnum.poroduct
+                          ? selectedIndex == index
+                              ? 350
+                              : 280
+                          : selectedIndex == index
+                              ? 350
+                              : 125,
+                      width: widget.type == TypeListViewEnum.poroduct
+                          ? selectedIndex == index
+                              ? 320
+                              : 150
+                          : selectedIndex == index
+                              ? 320
+                              : 125,
+                      decoration: BoxDecoration(
+                        borderRadius: const BorderRadius.all(Radius.circular(12)),
+                        border: Border.all(color: AppColors.lightGrey),
                       ),
-                      child: Stack(
-                        children: [
-                          const SizedBox(width: 300),
-                          Positioned(
-                            top: 9,
-                            left: 3,
-                            child: Visibility(
-                              visible: widget.type ==
-                                      TypeListViewEnum.barberArtist &&
-                                  selectedIndex == index,
-                              child: const Icon(Icons.menu),
+                      child: Padding(
+                        padding: EdgeInsets.symmetric(
+                          horizontal: selectedIndex == index ? 8 : 0,
+                        ),
+                        child: Stack(
+                          children: [
+                            // const SizedBox(width: 300),
+                            Positioned(
+                              top: 9,
+                              left: 3,
+                              child: Visibility(
+                                visible: widget.type ==
+                                        TypeListViewEnum.barberArtist &&
+                                    selectedIndex == index,
+                                child: const Icon(Icons.menu),
+                              ),
                             ),
-                          ),
-                          Positioned(
-                            right:
-                                widget.type == TypeListViewEnum.barberArtist &&
-                                        selectedIndex != index
-                                    ? 6
-                                    : 0,
-                            top: widget.type == TypeListViewEnum.poroduct
-                                ? selectedIndex == index
-                                    ? 8
-                                    : 0
-                                : 6,
-                            child: ClipRRect(
-                              borderRadius: BorderRadius.vertical(
-                                top: const Radius.circular(12),
-                                bottom: Radius.circular(
-                                  widget.type == TypeListViewEnum.poroduct &&
+                            Positioned(
+                              right:
+                                  widget.type == TypeListViewEnum.barberArtist &&
                                           selectedIndex != index
-                                      ? 0
-                                      : 12,
+                                      ? 6
+                                      : 0,
+                              top: widget.type == TypeListViewEnum.poroduct
+                                  ? selectedIndex == index
+                                      ? 8
+                                      : 0
+                                  : 6,
+                              child: ClipRRect(
+                                borderRadius: BorderRadius.vertical(
+                                  top: const Radius.circular(12),
+                                  bottom: Radius.circular(
+                                    widget.type == TypeListViewEnum.poroduct &&
+                                            selectedIndex != index
+                                        ? 0
+                                        : 12,
+                                  ),
                                 ),
-                              ),
-                              child: AnimatedContainer(
-                                duration: const Duration(milliseconds: 250),
-                                height: widget.type == TypeListViewEnum.poroduct
-                                    ? selectedIndex == index
-                                        ? 110
-                                        : 150
-                                    : 110,
-                                width: widget.type == TypeListViewEnum.poroduct
-                                    ? selectedIndex == index
-                                        ? 110
-                                        : 150
-                                    : 110,
-                                child: Image.asset(
-                                  'assets/images/1.png',
-                                  fit: BoxFit.cover,
+                                child: AnimatedContainer(
+                                  duration: const Duration(milliseconds: 250),
+                                  height: widget.type == TypeListViewEnum.poroduct
+                                      ? selectedIndex == index
+                                          ? 110
+                                          : 150
+                                      : 110,
+                                  width: widget.type == TypeListViewEnum.poroduct
+                                      ? selectedIndex == index
+                                          ? 110
+                                          : 150
+                                      : 110,
+                                  child: Image.asset(
+                                    'assets/images/1.png',
+                                    fit: BoxFit.cover,
+                                  ),
                                 ),
                               ),
                             ),
-                          ),
-                          Positioned(
-                            left: selectedIndex == index ? 0 : 40,
-                            top: selectedIndex == index ? 8 : 160,
-                            child: getTexts(context, index),
-                          ),
-                          Positioned(
-                            top: 120,
-                            left: 0,
-                            child: selectedIndex == index
-                                ? const Padding(
-                                    padding: EdgeInsets.symmetric(vertical: 8),
-                                    child: ColumnChart(),
-                                  )
-                                : const SizedBox(),
-                          ),
-                        ],
+                            Positioned(
+                              left: selectedIndex == index ? 0 : 40,
+                              top: selectedIndex == index ? 8 : 160,
+                              child: getTexts(context, index),
+                            ),
+                            Positioned(
+                              top: 120,
+                              left: 0,
+                              child: selectedIndex == index
+                                  ? const Padding(
+                                      padding: EdgeInsets.symmetric(vertical: 8),
+                                      child: ColumnChart(),
+                                    )
+                                  : const SizedBox(),
+                            ),
+                          ],
+                        ),
                       ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
           );
