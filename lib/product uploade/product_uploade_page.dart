@@ -149,7 +149,7 @@ class ProductUploadePage extends StatelessWidget {
                         decoration: BoxDecoration(
                           border:
                               Border.all(color: AppColors.lightGrey, width: 2),
-                          color: AppColors.black,
+                          color: AppColors.purple,
                           borderRadius:
                               const BorderRadius.all(Radius.circular(8)),
                         ),
@@ -201,7 +201,7 @@ class ProductUploadePage extends StatelessWidget {
               borderRadius: const BorderRadius.all(Radius.circular(360)),
               child: Container(
                 width: width,
-                height: height / 18,
+                height: 60,
                 decoration: BoxDecoration(
                   color: AppColors.white,
                   border: Border.all(
@@ -232,31 +232,35 @@ class ProductUploadePage extends StatelessWidget {
 
   Widget getTag(
       double height, double width, BuildContext context, String nameTag) {
-    return Container(
-      height: height / 25,
-      decoration: const BoxDecoration(
-        color: AppColors.purple,
-        borderRadius: BorderRadius.all(Radius.circular(360)),
-      ),
-      child: Padding(
-        padding: EdgeInsets.symmetric(horizontal: width / 30),
-        child: Center(
-          child: Row(
-            children: [
-              const Icon(
-                Icons.close,
-                color: AppColors.white,
-                size: 18,
+    return Row(
+      children: [
+        Container(
+          height: 37,
+          decoration: const BoxDecoration(
+            color: AppColors.purple,
+            borderRadius: BorderRadius.all(Radius.circular(360)),
+          ),
+          child: Padding(
+            padding: EdgeInsets.symmetric(horizontal: width / 30),
+            child: Center(
+              child: Row(
+                children: [
+                  const Icon(
+                    Icons.close,
+                    color: AppColors.white,
+                    size: 18,
+                  ),
+                  const SizedBox(width: 5),
+                  Text(
+                    nameTag,
+                    style: Theme.of(context).textTheme.labelMedium,
+                  ),
+                ],
               ),
-              const SizedBox(width: 5),
-              Text(
-                nameTag,
-                style: Theme.of(context).textTheme.labelMedium,
-              ),
-            ],
+            ),
           ),
         ),
-      ),
+      ],
     );
   }
 }

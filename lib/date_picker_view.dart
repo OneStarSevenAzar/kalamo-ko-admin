@@ -70,6 +70,9 @@ class DatePickerWidgetBaseState extends State<DatePickerWidgetBase> {
     return daysInMonth + weekdayOfFirst + nextMonthDays;
   }
 
+  final double bacWid = 210;
+  final double bacHei = 280;
+
   @override
   Widget build(BuildContext context) {
     final ThemeData theme = Theme.of(context);
@@ -89,8 +92,7 @@ class DatePickerWidgetBaseState extends State<DatePickerWidgetBase> {
             _appBarOfTheDatePicker(theme),
             AnimatedSwitcher(
               duration: const Duration(milliseconds: 300),
-              transitionBuilder:
-                  (Widget child, Animation<double> animation) {
+              transitionBuilder: (Widget child, Animation<double> animation) {
                 return FadeTransition(
                   opacity: animation,
                   child: child,
@@ -104,7 +106,6 @@ class DatePickerWidgetBaseState extends State<DatePickerWidgetBase> {
     );
   }
 
-/////////////
   Widget _appBarOfTheDatePicker(ThemeData theme) {
     return Padding(
       padding: const EdgeInsets.symmetric(
@@ -198,12 +199,10 @@ class DatePickerWidgetBaseState extends State<DatePickerWidgetBase> {
     );
   }
 
-/////////////
-
   Widget _calendarsTable(int totalDays, ThemeData theme) {
     return SizedBox(
-      height: 214,
-      width: 280,
+      height: bacHei,
+      width: bacWid,
       child: Column(
         children: <Widget>[
           _weekDayHeaders(theme),
@@ -286,8 +285,8 @@ class DatePickerWidgetBaseState extends State<DatePickerWidgetBase> {
     ];
 
     return SizedBox(
-      height: 210,
-      width: 280,
+      height: bacHei,
+      width: bacWid,
       child: GridView.builder(
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 3,
@@ -347,8 +346,8 @@ class DatePickerWidgetBaseState extends State<DatePickerWidgetBase> {
         List.generate(12, (index) => currentYear - 6 + index);
 
     return SizedBox(
-      height: 210,
-      width: 280,
+      height: bacHei,
+      width: bacWid,
       child: GridView.builder(
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 3,
@@ -491,7 +490,7 @@ class DatePickerWidgetBaseState extends State<DatePickerWidgetBase> {
           ? const Color(0xff1677FF)
           : (_hoveredIndex == index
               ? Colors.grey.withOpacity(0.1)
-              : Colors.white),
+              : AppColors.white),
       border: Border.all(color: borderColor, width: 1.5),
       borderRadius: BorderRadius.circular(6),
     );

@@ -57,7 +57,8 @@ class _CustomListViewState extends State<CustomListView> {
                               ? 320
                               : 125,
                       decoration: BoxDecoration(
-                        borderRadius: const BorderRadius.all(Radius.circular(12)),
+                        borderRadius:
+                            const BorderRadius.all(Radius.circular(12)),
                         border: Border.all(color: AppColors.lightGrey),
                       ),
                       child: Padding(
@@ -78,11 +79,11 @@ class _CustomListViewState extends State<CustomListView> {
                               ),
                             ),
                             Positioned(
-                              right:
-                                  widget.type == TypeListViewEnum.barberArtist &&
-                                          selectedIndex != index
-                                      ? 6
-                                      : 0,
+                              right: widget.type ==
+                                          TypeListViewEnum.barberArtist &&
+                                      selectedIndex != index
+                                  ? 6
+                                  : 0,
                               top: widget.type == TypeListViewEnum.poroduct
                                   ? selectedIndex == index
                                       ? 8
@@ -100,16 +101,18 @@ class _CustomListViewState extends State<CustomListView> {
                                 ),
                                 child: AnimatedContainer(
                                   duration: const Duration(milliseconds: 250),
-                                  height: widget.type == TypeListViewEnum.poroduct
-                                      ? selectedIndex == index
-                                          ? 110
-                                          : 150
-                                      : 110,
-                                  width: widget.type == TypeListViewEnum.poroduct
-                                      ? selectedIndex == index
-                                          ? 110
-                                          : 150
-                                      : 110,
+                                  height:
+                                      widget.type == TypeListViewEnum.poroduct
+                                          ? selectedIndex == index
+                                              ? 110
+                                              : 150
+                                          : 110,
+                                  width:
+                                      widget.type == TypeListViewEnum.poroduct
+                                          ? selectedIndex == index
+                                              ? 110
+                                              : 150
+                                          : 110,
                                   child: Image.asset(
                                     'assets/images/1.png',
                                     fit: BoxFit.cover,
@@ -127,7 +130,8 @@ class _CustomListViewState extends State<CustomListView> {
                               left: 0,
                               child: selectedIndex == index
                                   ? const Padding(
-                                      padding: EdgeInsets.symmetric(vertical: 8),
+                                      padding:
+                                          EdgeInsets.symmetric(vertical: 8),
                                       child: ColumnChart(),
                                     )
                                   : const SizedBox(),
@@ -156,6 +160,12 @@ class _CustomListViewState extends State<CustomListView> {
         ),
         Row(
           children: [
+            const Icon(Icons.star_rounded, size: 21),
+            Text(
+              '4.4',
+              style: Theme.of(context).textTheme.titleMedium,
+            ),
+            const SizedBox(width: 4),
             Text(
               '(55)',
               style: Theme.of(context)
@@ -163,12 +173,6 @@ class _CustomListViewState extends State<CustomListView> {
                   .labelMedium
                   ?.copyWith(color: AppColors.purple),
             ),
-            const SizedBox(width: 4),
-            Text(
-              '4.4',
-              style: Theme.of(context).textTheme.titleMedium,
-            ),
-            const Icon(Icons.star_rounded, size: 20),
           ],
         ),
         widget.type == TypeListViewEnum.barberArtist

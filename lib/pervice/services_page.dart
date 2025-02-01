@@ -66,7 +66,6 @@ class _ServicesPageState extends State<ServicesPage> {
                 ),
               ),
               const SliverPadding(padding: EdgeInsets.only(top: 30)),
-     
             ],
           ),
         ),

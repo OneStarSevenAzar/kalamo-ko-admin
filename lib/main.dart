@@ -1,7 +1,11 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:provider/provider.dart';
+import 'package:shop_style/barber%20shop/repository/customaize_repository.dart';
 import 'package:shop_style/barber%20shop/screens/barber_shop.dart';
+import 'package:shop_style/barber%20shop/screens/test.dart';
+import 'package:shop_style/barber%20shop/statemanagment/customaize_controller.dart';
 import 'package:shop_style/common/configs/colors.dart';
 import 'package:shop_style/common/configs/theme.dart';
 import 'package:shop_style/doshboard/screens/doshboard_page.dart';
@@ -112,3 +116,26 @@ class _MyAppState extends State<MyApp> {
     );
   }
 }
+
+
+
+// void main() {
+//   runApp(MyApp());
+// }
+
+// class MyApp extends StatelessWidget {
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return ChangeNotifierProvider(
+//       create: (_) => BarberShopProvider(repository: BarberShopRepository()),
+//       child: MaterialApp(
+//         title: 'Barber Shop App',
+//         theme: ThemeData(
+//           primarySwatch: Colors.blue,
+//         ),
+//         home: BarberShopScreen(),
+//       ),
+//     );
+//   }
+// }

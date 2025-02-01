@@ -9,7 +9,6 @@ import 'package:shop_style/doshboard/widgets/container_data.dart';
 import 'package:shop_style/doshboard/widgets/ticket_reserve.dart';
 import 'package:shop_style/view%20comments/screens/view_comments.dart';
 
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class DoshboardPage extends StatefulWidget {
@@ -76,9 +75,23 @@ class _DoshboardPageState extends State<DoshboardPage> {
                   },
                 ),
                 SliverToBoxAdapter(
-                  child: DatePickerWidgetBase(
-                    now: Jalali.now(),
-                    onChange: (newDateTime, shoudClose) {},
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: [
+                      const SizedBox(height: 15),
+                      Text(
+                        'رزرو های اخیر',
+                        style: Theme.of(context).textTheme.titleLarge,
+                      ),
+                      const SizedBox(height: 15),
+                      Container(
+                        height: 300,
+                        decoration: const BoxDecoration(
+                          color: AppColors.lightGrey2,
+                          borderRadius: BorderRadius.all(Radius.circular(22)),
+                        ),
+                      ),
+                    ],
                   ),
                 ),
                 SliverToBoxAdapter(
