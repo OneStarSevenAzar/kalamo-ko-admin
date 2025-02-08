@@ -1,28 +1,27 @@
 import 'package:flutter/material.dart';
 import 'package:shop_style/barber%20shop/model/customaize_model.dart';
 import 'package:shop_style/barber%20shop/repository/customaize_repository.dart';
+import 'package:shop_style/common/configs/state_handeler.dart';
+import 'package:shop_style/common/services/response_model.dart';
 
 class BarberShopProvider with ChangeNotifier {
-  final BarberShopRepository repository;
-  BarberShopModel? barberShop;
-  bool isLoading = false;
-  String? error;
+  final BarberRepository repository = BarberRepository();
 
-  BarberShopProvider({required this.repository});
+  BarberShopModel? barberShopData;
+  BlocStatus barberShopState = BlocStatusInitial();
 
   Future<void> fetchBarberShopData() async {
-    isLoading = true;
+    barberShopState = BlocStatusLoading();
     notifyListeners();
 
-    try {
-      barberShop = await repository.fetchBarberShopData();
-      error = null; // Reset error if fetch is successful
-    } catch (e) {
-      error = e.toString();
-      barberShop = null; // Reset barber shop if there's an error
-    } finally {
-      isLoading = false;
-      notifyListeners();
+    ResponseModel response = await repository.getBarber(1);
+    if (response.statusCode == 200) {
+      barberShopState = BlocStatusCompleted(null);
+      barberShopData = response.data;
+    } else {
+      barberShopState =
+          BlocStatusError(response.error?.message, response.statusCode);
     }
+    notifyListeners();
   }
 }

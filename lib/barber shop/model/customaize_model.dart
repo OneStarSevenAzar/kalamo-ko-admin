@@ -42,8 +42,8 @@ class BarberShopModel {
 }
 
 class Comment {
-  final int userId;
-  final int rating;
+  final int? userId;
+  final double? rating;
   final String comment;
   final String createdAt;
 
@@ -84,7 +84,7 @@ class ImageData {
 class Location {
   final double latitude;
   final double longitude;
-  final int id;
+  final int? id;
 
   Location({
     required this.latitude,

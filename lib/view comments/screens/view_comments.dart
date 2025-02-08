@@ -158,7 +158,7 @@ class _ViewCommentsState extends State<ViewComments> {
                 SliverList.builder(
                   itemBuilder: (context, index) {
                     return index != 5
-                        ? const UserComment()
+                        ? UserComment(index: index)
                         : const SizedBox(height: 50);
                   },
                   itemCount: 6,
