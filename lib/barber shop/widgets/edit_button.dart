@@ -6,10 +6,12 @@ class EditButton extends StatelessWidget {
     super.key,
     this.nameCategory = '',
     this.onTap,
+    this.editing = true,
   });
 
   final String nameCategory;
   final GestureTapCallback? onTap;
+  final bool editing;
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +37,7 @@ class EditButton extends StatelessWidget {
             ),
             child: Center(
               child: Text(
-                'ویرایش',
+                editing ? 'ویرایش' : 'تایید',
                 style: Theme.of(context).textTheme.labelMedium?.copyWith(
                       color: AppColors.purple,
                     ),

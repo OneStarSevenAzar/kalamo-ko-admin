@@ -7,7 +7,7 @@ class AppColors {
   static const Color grey = Color(0xFF757575);
   static const Color lightGrey = Color(0xFFCCCCCC);
   static const Color lightGrey2 = Color(0xFFF5F5F5);
-  static const Color yellow = Color(0xFFE1E100);
+  static const Color yellow = Color(0xFFE9D502);
   static const Color darkYellow = Color(0xFFBCAC00);
   static const Color boldPurple = Color(0xFF000080);
   static const Color purple = Color(0xFF15A4E1);
@@ -18,4 +18,6 @@ class AppColors {
   static const Color darkWhite = Color(0xFFD9D9D9);
   static const Color cyan = Color(0xFF73AFFE);
   static const Color grey2 = Color(0xFF909090);
+  static const Color timePicker = Color(0xFF009CDD);
+  static const Color timePickerLight = Color(0xFF5BCFFF);
 }

@@ -129,7 +129,7 @@ class _ColumnChartState extends State<ColumnChart> {
                               begin: Alignment.topCenter,
                               end: Alignment.bottomCenter,
                               colors: [
-                                AppColors.boldPurple,
+                                AppColors.purple,
                                 AppColors.cyan,
                               ],
                             ),

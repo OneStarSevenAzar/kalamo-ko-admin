@@ -17,12 +17,6 @@ class _BannerSliderState extends State<BannerSlider> {
   @override
   void initState() {
     super.initState();
-    WidgetsBinding.instance.addPostFrameCallback(
-      (timeStamp) {
-        Provider.of<BarberShopProvider>(context, listen: false)
-            .fetchBarberShopData();
-      },
-    );
   }
 
   PageController controller = PageController();

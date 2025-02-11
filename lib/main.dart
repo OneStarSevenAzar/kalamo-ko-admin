@@ -13,37 +13,48 @@ void main() {
   Provider.debugCheckInvalidValueType = null;
   WidgetsFlutterBinding.ensureInitialized();
   setupLocator();
-  runApp(MaterialApp(
-    localizationsDelegates: const [
-      AppLocalizations.delegate,
-      GlobalMaterialLocalizations.delegate,
-      GlobalWidgetsLocalizations.delegate,
-      GlobalCupertinoLocalizations.delegate,
-    ],
-    supportedLocales: const [
-      Locale('en', 'US'), // زبان انگلیسی
-      Locale('fa', 'IR'), // زبان فارسی
-    ],
-    locale: const Locale('fa', ''), // زبان پیشفرض (فارسی)
-    theme: CustomTheme().lighTheme,
-    scrollBehavior: const MaterialScrollBehavior().copyWith(
-      dragDevices: {
-        PointerDeviceKind.mouse,
-        PointerDeviceKind.touch,
-        PointerDeviceKind.stylus,
-        PointerDeviceKind.unknown,
-      },
-    ),
-    home: MultiProvider(
-      providers: [
-        ChangeNotifierProvider(
-          create: (context) => locator.get<GlobalController>(),
-        ),
-        ChangeNotifierProvider(
-          create: (context) => locator.get<BarberShopProvider>(),
-        ),
+  runApp(const MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      localizationsDelegates: const [
+        AppLocalizations.delegate,
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
       ],
-      child: const CustomNavigationBar(),
-    ),
-  ));
+      supportedLocales: const [
+        Locale('en', 'US'), // زبان انگلیسی
+        Locale('fa', 'IR'), // زبان فارسی
+      ],
+      locale: const Locale('fa', ''), // زبان پیشفرض (فارسی)
+      theme: CustomTheme().lighTheme,
+      scrollBehavior: const MaterialScrollBehavior().copyWith(
+        dragDevices: {
+          PointerDeviceKind.mouse,
+          PointerDeviceKind.touch,
+          PointerDeviceKind.stylus,
+          PointerDeviceKind.unknown,
+        },
+      ),
+      home: MultiProvider(
+        providers: [
+          ChangeNotifierProvider(
+            create: (context) => locator.get<GlobalController>(),
+          ),
+          ChangeNotifierProvider(
+            create: (context) => locator.get<BarberShopProvider>(),
+          ),
+        ],
+        child: const CustomNavigationBar(),
+      ),
+    );
+  }
 }

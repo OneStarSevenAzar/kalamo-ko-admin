@@ -39,15 +39,12 @@ class CustomaizePage extends StatelessWidget {
                       child: BannerSlider(),
                     ),
                   ),
+                  const SizedBox(height: 10),
                 ],
               ),
             ),
             const SliverToBoxAdapter(
-              child: UploadeImage(
-                mainText: 'لوگو',
-                hintText:
-                    'تصویر لوگو یا یکی از عکس های محیط آرایشگاه خود را آپلود کنید',
-              ),
+              child: UploadeImage(),
             ),
           ],
         ),

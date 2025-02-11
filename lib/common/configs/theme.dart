@@ -55,7 +55,7 @@ class CustomTheme {
       ),
       displayMedium: TextStyle(
         fontFamily: 'IRANSansDB',
-        color: AppColors.darkYellow,
+        color: AppColors.yellow,
         fontWeight: FontWeight.w700,
         fontSize: 12,
       ),

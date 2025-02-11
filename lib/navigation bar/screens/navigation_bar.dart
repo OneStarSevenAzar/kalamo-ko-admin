@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:shop_style/barber%20shop/screens/barber_shop.dart';
+import 'package:shop_style/barber%20shop/statemanagment/customaize_controller.dart';
 import 'package:shop_style/doshboard/screens/doshboard_page.dart';
 import 'package:shop_style/common/configs/colors.dart';
-import 'package:shop_style/home/screens/home_screen.dart';
 import 'package:shop_style/pervice/services_page.dart';
 import 'package:shop_style/product%20uploade/product_uploade_page.dart';
 
@@ -13,12 +14,23 @@ class CustomNavigationBar extends StatefulWidget {
 }
 
 class _CustomNavigationBarState extends State<CustomNavigationBar> {
+  @override
+  void initState() {
+    super.initState();
+        WidgetsBinding.instance.addPostFrameCallback(
+      (timeStamp) {
+        Provider.of<BarberShopProvider>(context, listen: false)
+            .fetchBarberShopData();
+            print('helloooo');
+      },
+    );
+  }
   int _currentIndex = 0;
   final List<Widget> _screens = const [
     DoshboardPage(),
     ServicesPage(),
     ProductUploadePage(),
-    HomeScreen(),
+    // HomeScreen(),
     BarberShop(),
   ];
   @override
@@ -66,10 +78,10 @@ class _CustomNavigationBarState extends State<CustomNavigationBar> {
               icon: Icon(Icons.add_business_rounded),
               label: 'افزودن آگهی',
             ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.chat),
-              label: 'چت',
-            ),
+            // BottomNavigationBarItem(
+            //   icon: Icon(Icons.chat),
+            //   label: 'چت',
+            // ),
             BottomNavigationBarItem(
               icon: Icon(Icons.shop_rounded),
               label: 'آرایشگاه',

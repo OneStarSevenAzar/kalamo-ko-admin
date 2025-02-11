@@ -18,12 +18,7 @@ class _UserCommentState extends State<UserComment> {
   @override
   void initState() {
     super.initState();
-    WidgetsBinding.instance.addPostFrameCallback(
-      (timeStamp) {
-        Provider.of<BarberShopProvider>(context, listen: false)
-            .fetchBarberShopData();
-      },
-    );
+
   }
 
   var api = locator.get<BarberShopProvider>().barberShopData!;

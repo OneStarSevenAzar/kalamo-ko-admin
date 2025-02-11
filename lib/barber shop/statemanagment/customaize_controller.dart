@@ -8,7 +8,9 @@ class BarberShopProvider with ChangeNotifier {
   final BarberRepository repository = BarberRepository();
 
   BarberShopModel? barberShopData;
+
   BlocStatus barberShopState = BlocStatusInitial();
+  BlocStatus barberShopPutState = BlocStatusInitial();
 
   Future<void> fetchBarberShopData() async {
     barberShopState = BlocStatusLoading();
@@ -20,6 +22,36 @@ class BarberShopProvider with ChangeNotifier {
       barberShopData = response.data;
     } else {
       barberShopState =
+          BlocStatusError(response.error?.message, response.statusCode);
+    }
+    notifyListeners();
+  }
+
+  Future<void> fetchBarberShopPut({
+    required String name,
+    required bool isActive,
+    String shopType = 'SEEN_RECENTLY',
+    required int lat,
+    required int long,
+    required int barberShopId,
+    required String imageName,
+    required String imageUrl,
+    required int imageId,
+  }) async {
+    barberShopPutState = BlocStatusLoading();
+    notifyListeners();
+
+    ResponseModel response = await repository.updateBarberShop(
+      name: name,
+      isActive: isActive,
+      lat: lat,
+      long: long,
+      barberShopId: barberShopId,
+    );
+    if (response.statusCode == 200) {
+      barberShopPutState = BlocStatusCompleted(null);
+    } else {
+      barberShopPutState =
           BlocStatusError(response.error?.message, response.statusCode);
     }
     notifyListeners();

@@ -6,11 +6,12 @@ class CustomTextBox extends StatefulWidget {
     super.key,
     this.mainText = '',
     this.hintTextfield = '',
+    this.onChanged,
   });
 
   final String mainText;
   final String hintTextfield;
-
+  final Function(String value)? onChanged;
   @override
   State<CustomTextBox> createState() => _CustomTextBoxState();
 }
@@ -51,6 +52,8 @@ class _CustomTextBoxState extends State<CustomTextBox> {
                   child: AbsorbPointer(
                     absorbing: absorbingTextfield,
                     child: TextField(
+                      onChanged: widget.onChanged,
+                      controller: controller,
                       focusNode: focusNode,
                       style: Theme.of(context)
                           .textTheme

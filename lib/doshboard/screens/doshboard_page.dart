@@ -12,6 +12,7 @@ import 'package:shop_style/doshboard/widgets/ticket_reserve.dart';
 import 'package:shop_style/locator.dart';
 import 'package:shop_style/view%20comments/screens/view_comments.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:shop_style/view%20reserve/screens/view_reserve.dart';
 
 class DoshboardPage extends StatefulWidget {
   const DoshboardPage({super.key});
@@ -26,17 +27,12 @@ class _DoshboardPageState extends State<DoshboardPage> {
   @override
   void initState() {
     super.initState();
-    WidgetsBinding.instance.addPostFrameCallback(
-      (timeStamp) {
-        Provider.of<BarberShopProvider>(context, listen: false)
-            .fetchBarberShopData();
-      },
-    );
 
-    minNumComments =
-        locator.get<BarberShopProvider>().barberShopData!.comments.length > 3
-            ? 3
-            : locator.get<BarberShopProvider>().barberShopData!.comments.length;
+
+    // minNumComments =
+    //     locator.get<BarberShopProvider>().barberShopData!.comments.length > 3
+    //         ? 3
+    //         : locator.get<BarberShopProvider>().barberShopData!.comments.length;
   }
 
   final List<IconData> iconBox = [
@@ -150,7 +146,7 @@ class _DoshboardPageState extends State<DoshboardPage> {
                         width: 13,
                         decoration: const BoxDecoration(
                           shape: BoxShape.circle,
-                          color: AppColors.green,
+                          color: AppColors.purple,
                         ),
                       ),
                       const SizedBox(width: 12),
@@ -160,9 +156,17 @@ class _DoshboardPageState extends State<DoshboardPage> {
                       )
                     ],
                   ),
-                  const TicketReserve(),
+                  const TicketReserve(itemCount: 3),
                   const SizedBox(width: 12),
-                  const ShowMoreButton(),
+                  ShowMoreButton(
+                    onTap: () {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (context) => const ViewReserve(),
+                        ),
+                      );
+                    },
+                  ),
                 ],
               ),
             ),

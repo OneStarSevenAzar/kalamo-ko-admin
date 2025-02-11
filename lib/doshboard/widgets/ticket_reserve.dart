@@ -4,7 +4,10 @@ import 'package:shop_style/common/configs/colors.dart';
 class TicketReserve extends StatefulWidget {
   const TicketReserve({
     super.key,
+    required this.itemCount,
   });
+
+  final int itemCount;
 
   @override
   State<TicketReserve> createState() => _TicketReserveState();
@@ -17,13 +20,14 @@ class _TicketReserveState extends State<TicketReserve> {
   @override
   Widget build(BuildContext context) {
     final double width = MediaQuery.of(context).size.width;
+    final double height = MediaQuery.of(context).size.height;
 
     return AnimatedContainer(
       duration: const Duration(milliseconds: 200),
-      height: heightSize,
+      height: widget.itemCount == 3 ? heightSize : height,
       child: ListView.builder(
         physics: const NeverScrollableScrollPhysics(),
-        itemCount: 3,
+        itemCount: widget.itemCount,
         itemBuilder: (BuildContext context, int index) {
           return Padding(
             padding: const EdgeInsets.symmetric(vertical: 12),

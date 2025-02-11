@@ -17,12 +17,7 @@ class _CustomAppbarState extends State<CustomAppbar> {
   @override
   void initState() {
     super.initState();
-    WidgetsBinding.instance.addPostFrameCallback(
-      (timeStamp) {
-        Provider.of<BarberShopProvider>(context, listen: false)
-            .fetchBarberShopData();
-      },
-    );
+
     selectedValue = myShops[0];
   }
 

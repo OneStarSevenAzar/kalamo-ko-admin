@@ -2,21 +2,12 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:provider/provider.dart';
+import 'package:shop_style/barber%20shop/statemanagment/customaize_controller.dart';
 import 'package:shop_style/common/configs/colors.dart';
 
 class UploadeImage extends StatefulWidget {
-  const UploadeImage({
-    super.key,
-    this.mainText = '',
-    this.hintText = '',
-    this.hintStyle,
-    this.importantText = false,
-  });
-
-  final String mainText;
-  final String hintText;
-  final TextStyle? hintStyle;
-  final bool importantText;
+  const UploadeImage({super.key});
 
   @override
   State<UploadeImage> createState() => _UploadeImageState();
@@ -43,27 +34,25 @@ class _UploadeImageState extends State<UploadeImage> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const SizedBox(height: 20),
-        Text(
-          widget.mainText,
-          style: Theme.of(context).textTheme.titleMedium,
-        ),
-        const SizedBox(height: 5),
-        widget.importantText
-            ? getImportantAsText(context)
-            : Text(
-                widget.hintText,
-                style: Theme.of(context).textTheme.bodySmall,
-              ),
-        const SizedBox(height: 16),
         GestureDetector(
-          onTap: () {
-            _pickImage();
+          onTap: () async {
+            await _pickImage();
+            // Provider.of<BarberShopProvider>(context, listen: false)
+            //     .fetchBarberShopPut(
+            //   name: '',
+            //   isActive: true,
+            //   lat: 0,
+            //   long: 0,
+            //   barberShopId: barberShopId,
+            //   imageName: '1',
+            //   imageUrl: _image!,
+            //   imageId: 1,
+            // );
           },
           child: ClipRRect(
             borderRadius: const BorderRadius.all(Radius.circular(8)),
             child: Container(
-              width: width / 4,
+              width: width / 2.4,
               height: width / 4,
               decoration: BoxDecoration(
                 borderRadius: const BorderRadius.all(Radius.circular(8)),
@@ -82,28 +71,6 @@ class _UploadeImageState extends State<UploadeImage> {
           ),
         ),
       ],
-    );
-  }
-
-  Widget getImportantAsText(BuildContext context) {
-    return RichText(
-      text: TextSpan(
-        children: [
-          TextSpan(
-            text:
-                'در صورتی که قبلا این مدل را اجرا کرده اید و تصویر قبل و بعد از اجرای آن را داری',
-            style: Theme.of(context).textTheme.displaySmall,
-          ),
-          TextSpan(
-            text: ' تصویر قبل ',
-            style: Theme.of(context).textTheme.displayMedium,
-          ),
-          TextSpan(
-            text: 'را در این محل آپلود کنید',
-            style: Theme.of(context).textTheme.displaySmall,
-          ),
-        ],
-      ),
     );
   }
 }
